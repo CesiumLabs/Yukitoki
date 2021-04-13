@@ -1,6 +1,4 @@
 <script type="ts">
-  import { SITE_NAME } from "../../config.js";
-
   function toggleTheme() {
     const state = localStorage.getItem("theme") === "dark" ? "light" : "dark";
     localStorage.setItem("theme", state);

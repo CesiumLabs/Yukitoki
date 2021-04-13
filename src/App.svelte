@@ -17,6 +17,7 @@
 	  margin: 0;
 	  padding: 0;
   }
+  
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
