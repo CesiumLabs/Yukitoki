@@ -4,32 +4,14 @@
   "description": "Documentation site for Snowflake Studio ❄",
   "private": true,
   "scripts": {
-    "build": "rollup -c",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear",
-    "validate": "svelte-check"
-  },
-  "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
-    "@tsconfig/svelte": "^1.0.0",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "svelte": "^3.0.0",
-    "svelte-check": "^1.0.0",
-    "svelte-preprocess": "^4.0.0",
-    "tslib": "^2.0.0",
-    "typescript": "^4.0.0"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
   },
   "dependencies": {
-    "autoprefixer": "^9",
-    "postcss": "^7",
-    "sirv-cli": "^1.0.0",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat"
+    "next": "^10.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1"
   },
   "author": "Snowflake107",
   "license": "GPL-3.0",
@@ -44,5 +26,10 @@
   "bugs": {
     "url": "https://github.com/DevSnowflake/docs/issues"
   },
-  "homepage": "https://github.com/DevSnowflake/docs#readme"
+  "homepage": "https://github.com/DevSnowflake/docs#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.10",
+    "tailwindcss": "^2.1.1"
+  }
 }
