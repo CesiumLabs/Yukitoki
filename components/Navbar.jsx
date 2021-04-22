@@ -57,14 +57,14 @@ export default function Navbar() {
                                 NAV_LINKS.map((m, i) => {
                                     if (m.external) return (
                                         <li className="mb-1" key={i}>
-                                            <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-green-50 rounded" href={m.path} target="_blank">{m.name}</a>
+                                            <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded" href={m.path} target="_blank">{m.name}</a>
                                         </li>
                                     )
 
                                     return (
                                         <li className="mb-1" key={i}>
                                             <Link href={m.path}>
-                                                <a onClick={() => document.getElementById('mobile_menu').classList.add('hidden')} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-green-50 rounded">{m.name}</a>
+                                                <a onClick={() => document.getElementById('mobile_menu').classList.add('hidden')} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded">{m.name}</a>
                                             </Link>
                                         </li>
                                     )

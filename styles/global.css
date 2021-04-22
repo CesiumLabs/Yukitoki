@@ -1,15 +1,143 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
 
 * {
-	margin: 0;
-	padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	font-family: "Noto Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 
 .logoholder {
-	user-select: none;
-	-webkit-user-select: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.loadingcontainer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.spring {
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  overflow: visible;
+}
+
+.bubble {
+  background: #ffffff;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  display: block;
+  left: 0;
+  margin-left: -12px;
+  bottom: 0;
+  opacity: 0;
+  border-radius: 50%;
+  animation: bubbleUp 1s infinite ease-in-out;
+  -webkit-animation: bubbleUp 1s infinite ease-in-out;
+  -o-animation: bubbleUp 1s infinite ease-in-out;
+  -moz-animation: bubbleUp 1s infinite ease-in-out;
+}
+
+.bubble1 {
+  left: 0px;
+  top: 0px;
+  -webkit-animation-delay: 0;
+  animation-delay: 0;
+}
+
+.bubble2 {
+  width: 12px;
+  height: 12px;
+  left: 0px;
+  -webkit-animation-delay: 300ms;
+  animation-delay: 300ms;
+}
+
+.bubble3 {
+  left: -10px;
+  top: -10px;
+  -webkit-animation-delay: 600ms;
+  animation-delay: 600ms;
+}
+
+.bubble4 {
+  width: 28px;
+  height: 28px;
+  left: 5px;
+  -webkit-animation-delay: 900ms;
+  animation-delay: 900ms;
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+}
+
+.bubble5 {
+  width: 16px;
+  height: 16px;
+  left: 0px;
+  top: 0px;
+  -webkit-animation-delay: 1200ms;
+  animation-delay: 1200ms;
+  -webkit-animation-duration: 1.2s;
+  animation-duration: 1.2s;
+}
+
+@keyframes bubbleUp3d {
+  0% {
+    -webkit-transform: translateY(0px) scale3d(0.5, 0.5, 0.5);
+    opacity: 0;
+  }
+  30% {
+    -webkit-transform: translateY(0px) scale3d(0.8, 0.8, 0.8);
+    opacity: 1;
+  }
+  90% {
+    -webkit-transform: translateY(-20px) scale3d(1, 1, 1);
+    opacity: 1;
+  }
+  99% {
+    -webkit-transform: translateY(-30px) scale3d(2, 2, 2);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: translateY(0px) scale3d(1, 1, 1);
+    opacity: 0;
+  }
+}
+
+@keyframes bubbleUp {
+  0% {
+    top: 0px;
+    -webkit-transform: scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    top: 0px;
+    -webkit-transform: scale(0.7);
+    opacity: 1;
+  }
+  93% {
+    top: -30px;
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  99% {
+    top: -36px;
+    -webkit-transform: scale(2);
+    opacity: 0;
+  }
+  100% {
+    top: 0px;
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
 }

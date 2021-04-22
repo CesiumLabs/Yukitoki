@@ -20,5 +20,6 @@ module.exports = {
         TITLE: "Snowflake Studio ❄",
         DESCRIPTION: "Snowflake is a twitter id blah blah which does blah and blah works like blah kek pog uww",
         IMAGE: "https://snowdocs.vercel.app/favicon.png"
-    }
+    },
+    DOCUMENTATION_SOURCE: "https://raw.githubusercontent.com/Androz2091/discord-player/docs/rewrite.json"
 };

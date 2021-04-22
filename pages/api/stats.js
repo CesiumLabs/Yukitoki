@@ -4,7 +4,7 @@ const contributors = (a) => `${stats(a)}/stats/contributors`;
 
 const cache = new Map();
 
-setInterval(() => cache.clear(), 86400000);
+// setInterval(() => cache.clear(), 86400000);
 
 export default async (req, res) => {
     if (cache.has(req.query.name)) return res.json(cache.get(req.query.name));
