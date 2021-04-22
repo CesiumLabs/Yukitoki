@@ -141,3 +141,16 @@ body {
     opacity: 0;
   }
 }
+
+blockquote {
+  transition: .8s;
+  border-radius: 4px;
+  padding-right: 2px;
+}
+
+blockquote:hover {
+  cursor: pointer;
+  border-left-color: #3182ce;
+  background-color: #1b2231;
+  transition: .8s;
+}
