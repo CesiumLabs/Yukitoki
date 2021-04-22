@@ -8,3 +8,8 @@
 body {
 	font-family: "Noto Sans", sans-serif;
 }
+
+.logoholder {
+	user-select: none;
+	-webkit-user-select: none;
+}
