@@ -4,7 +4,14 @@ import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
 
 const params = ["classes", "typedefs"];
-const mdconv = new Converter({ tables: true, ghCodeBlocks: true, emoji: true, });
+const mdconv = new Converter({
+    tables: true,
+    ghCodeBlocks: true,
+    emoji: true,
+    ghMentions: true,
+    ghMentionsLink: true,
+    ghCompatibleHeaderId: true
+});
 
 const makeHTML = (md) => mdconv.makeHtml(md);
 
@@ -22,7 +29,9 @@ export default function Sidebar({ docs }) {
 
     function navigate(navigateTo) {
         const loc = custom.find(x => x.files[navigateTo] !== undefined);
-        const file = loc.files[navigateTo]
+        const file = loc.files[navigateTo];
+
+        console.log(`[Navigation] - ${file.name}`);
 
         setDocsContent(makeHTML(file.content))
     }
