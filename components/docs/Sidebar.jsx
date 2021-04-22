@@ -50,7 +50,7 @@ export default function Sidebar({ docs }) {
     return (
         <div className="relative container mx-auto">
             <div className="space-x-4 py-5 flex">
-                <div className="inline-block">
+                <div className="inline-grid">
                     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-900 text-gray-50">
                         <div className="flex flex-col top-0 left-0 w-64 bg-gray-900 h-full">
                             <div className="pl-6 h-20 border-b border-gray-800">
@@ -58,7 +58,7 @@ export default function Sidebar({ docs }) {
                                     <input className="appearance-none p-3 mx-auto my-auto w-full text-xs font-semibold leading-none bg-gray-50 rounded outline-none" type="text" name="field-name" placeholder="Search" onKeyUp={(e) => e.keyCode === 13 ? handler(e) : null} />
                                 </div>
                             </div>
-                            <div className="overflow-y-auto overflow-x-hidden flex-grow">
+                            <div className="overflow-y-auto overflow-x-auto flex-grow">
                                 <ul className="flex flex-col py-6 space-y-1">
                                     {
                                         /* Custom Doc File */
@@ -128,7 +128,7 @@ export default function Sidebar({ docs }) {
                     </div>
                 </div>
 
-                <div className="inline-block docs-container px-5 border-l-2 border-gray-300">
+                <div className="inline-grid docs-container px-5 lg:border-l-2 lg:border-gray-300">
                     <div id="docs-content" className="text-white prose" dangerouslySetInnerHTML={{ __html: docsContent }}></div>
                 </div>
             </div>
