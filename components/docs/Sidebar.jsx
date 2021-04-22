@@ -20,7 +20,10 @@ export default function Sidebar({ docs }) {
     }
 
     function navigate(navigateTo) {
-        console.log(navigateTo);
+        const loc = custom.find(x => x.files[navigateTo] !== undefined);
+        const file = loc.files[navigateTo]
+
+        setDocsContent(makeHTML(file.content))
     }
 
     function highlight() {
