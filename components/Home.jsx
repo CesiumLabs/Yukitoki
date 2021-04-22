@@ -44,7 +44,7 @@ export default class Home extends Component {
                     </div>
                 </section>
 
-                <div className="bg-gray-800">
+                <div className="bg-gray-900">
                     <div className="container mx-auto">
                         <div className="py-5 lg:flex lg:justify-center lg:align-center lg:space-x-20 px-3">
                             <div className="text-white">
