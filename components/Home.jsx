@@ -9,9 +9,9 @@ export default class Home extends Component {
         super(...props);
 
         this.state = {
-            downloads: 100,
-            stars: 2,
-            contributors: 1
+            downloads: 188027,
+            stars: 175,
+            contributors: 18
         };
     }
 
@@ -19,7 +19,7 @@ export default class Home extends Component {
         const data = await fetch(`${window.location.origin}/api/stats?name=${STATS.MODULE_NAME}&repo=${STATS.GITHUB_REPO}`)
             .then(res => res.json())
             .then(data => ({ downloads: data.downloads, stars: data.stars, contributors: data.contributors }))
-            .catch(() => ({ downloads: 100, stars: 2, contributors: 1 }));
+            .catch(() => ({ downloads: 188027, stars: 175, contributors: 18 }));
 
         this.setState(data);
     }
