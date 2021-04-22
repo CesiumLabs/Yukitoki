@@ -8,8 +8,6 @@ const mdconv = new Converter({
     tables: true,
     ghCodeBlocks: true,
     emoji: true,
-    ghMentions: true,
-    ghMentionsLink: true,
     ghCompatibleHeaderId: true
 });
 
@@ -19,7 +17,13 @@ export default function Sidebar({ docs }) {
     const [docsContent, setDocsContent] = useState();
     const data = Object.keys(docs).filter(a => params.includes(a)).map(m => ({ name: m, data: docs[m] }));
     const custom = Object.values(docs.custom);
-    if (!docsContent) setDocsContent(makeHTML(Object.values(custom[0].files)[0].content));
+    if (!docsContent) {
+        let doccont = Object.values(custom[0].files)[0];
+
+        if (doccont.type === "js") doccont.content = `\`\`\`js\n${doccont.content}\`\`\``;
+
+        setDocsContent(makeHTML(doccont.content));
+    }
 
     useEffect(() => highlight());
 
@@ -32,7 +36,7 @@ export default function Sidebar({ docs }) {
         const loc = custom.find(x => x.files[navigateTo] !== undefined);
         const file = loc.files[navigateTo];
 
-        console.log(`[Navigation] - ${file.name}`);
+        if (file.type === "js") file.content = `\`\`\`js\n${file.content}\`\`\``;
 
         setDocsContent(makeHTML(file.content))
     }
