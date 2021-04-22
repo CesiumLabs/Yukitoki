@@ -4,8 +4,9 @@ import hljs from "highlight.js";
 import 'highlight.js/styles/monokai-sublime.css';
 
 const params = ["classes", "typedefs"];
+const mdconv = new Converter({ tables: true, ghCodeBlocks: true, emoji: true, });
 
-const makeHTML = (md) => new Converter({ tables: true, ghCodeBlocks: true, emoji: true, }).makeHtml(md);
+const makeHTML = (md) => mdconv.makeHtml(md);
 
 export default function Sidebar({ docs }) {
     const [docsContent, setDocsContent] = useState();
