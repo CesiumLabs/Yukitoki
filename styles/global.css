@@ -154,3 +154,25 @@ blockquote:hover {
   background-color: #1b2231;
   transition: .8s;
 }
+
+::selection, ::-moz-selection {
+  color: #FFFFFF;
+  background: #3182ce;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: #8d8d8d; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: #117add; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0f66b8; 
+}

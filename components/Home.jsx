@@ -33,7 +33,7 @@ export default class Home extends Component {
                             </div>
 
                             <div className="flex justify-center align-center mt-20 mb-20">
-                                <code className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md" onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch(e => { })}>
+                                <code className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md" title="Click to copy" onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch(e => { })}>
                                     <h1 className="text-lg">{INSTALL_COMMAND}</h1>
                                 </code>
                             </div>
