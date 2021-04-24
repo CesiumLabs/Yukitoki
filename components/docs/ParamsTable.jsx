@@ -1,4 +1,3 @@
-import { PARAMS } from "../../config";
 import TypeLink from "./TypeLink";
 
 export default function ParamsTable({ paramsData, withBorder, description }) {
