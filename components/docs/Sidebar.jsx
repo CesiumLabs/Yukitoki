@@ -89,23 +89,7 @@ export default function Sidebar({ docs }) {
     return (
         <div className="relative container mx-auto bg-gray-900">
             <div className="space-x-4 py-5 inline-flex bg-gray-900">
-                <div className="lg:hidden">
-                    <button
-                        className="navbar-burger flex items-center text-gray-600 p-3"
-                        onClick={() => document.getElementById("doc_mobile").classList.toggle("hidden")}
-                    >
-                        <svg
-                            className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path d="M24 22h-24l12-20z" />
-                        </svg>
-                    </button>
-                </div>
-                <div className="hidden sm:block" id="doc_mobile">
+                <div>
                     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-900 text-gray-50">
                         <div className="flex flex-col top-0 left-0 w-64 bg-gray-900 h-full">
                             <div className="overflow-y-auto overflow-x-auto flex-grow">
