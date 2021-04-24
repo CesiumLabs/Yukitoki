@@ -9,5 +9,5 @@ export default function Loader() {
                 <span className="bubble bubble5"></span>
             </div>
         </section>
-    )
+    );
 }

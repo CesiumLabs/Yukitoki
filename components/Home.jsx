@@ -2,7 +2,6 @@ import { Component } from "react";
 import { DESCRIPTION, DISCORD_INVITE, INSTALL_COMMAND, SITE_NAME, STATS, GITHUB_LINK } from "../config";
 
 export default class Home extends Component {
-
     constructor(...props) {
         super(...props);
 
@@ -14,9 +13,11 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
-        const data = await fetch(`${window.location.origin}/api/stats?name=${STATS.MODULE_NAME}&repo=${STATS.GITHUB_REPO}`)
-            .then(res => res.json())
-            .then(data => ({ downloads: data.downloads, stars: data.stars, contributors: data.contributors }))
+        const data = await fetch(
+            `${window.location.origin}/api/stats?name=${STATS.MODULE_NAME}&repo=${STATS.GITHUB_REPO}`
+        )
+            .then((res) => res.json())
+            .then((data) => ({ downloads: data.downloads, stars: data.stars, contributors: data.contributors }))
             .catch(() => ({ downloads: 188027, stars: 175, contributors: 18 }));
 
         this.setState(data);
@@ -29,18 +30,34 @@ export default class Home extends Component {
                     <div className="container mx-auto">
                         <div className="py-3">
                             <div>
-                                <h1 className="text-center lg:text-9xl text-6xl font-bold leading-none text-white pt-20 logoholder">{SITE_NAME}</h1>
+                                <h1 className="text-center lg:text-9xl text-6xl font-bold leading-none text-white pt-20 logoholder">
+                                    {SITE_NAME}
+                                </h1>
                             </div>
 
                             <div className="flex justify-center align-center mt-20 mb-20">
-                                <code className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md" title="Click to copy" onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch(e => { })}>
+                                <code
+                                    className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md"
+                                    title="Click to copy"
+                                    onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})}
+                                >
                                     <h1 className="text-lg">{INSTALL_COMMAND}</h1>
                                 </code>
                             </div>
 
                             <div className="buttons flex space-x-2 justify-center align-center mb-10">
-                                <a className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400" href={GITHUB_LINK}>GitHub</a>
-                                <a className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-400" href={DISCORD_INVITE}>Discord</a>
+                                <a
+                                    className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400"
+                                    href={GITHUB_LINK}
+                                >
+                                    GitHub
+                                </a>
+                                <a
+                                    className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-400"
+                                    href={DISCORD_INVITE}
+                                >
+                                    Discord
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -57,9 +74,17 @@ export default class Home extends Component {
                             <div className="text-white">
                                 <h1 className="text-2xl text-center font-bold">Statistics</h1>
                                 <ul style={{ listStyle: "disc" }}>
-                                    <li className="ml-10">{this.state.downloads.toLocaleString()} Download{this.state.downloads === 1 ? "" : "s"}</li>
-                                    <li className="ml-10">{this.state.stars.toLocaleString()} Star{this.state.stars === 1 ? "" : "s"}</li>
-                                    <li className="ml-10">{this.state.contributors.toLocaleString()} Contributor{this.state.contributors === 1 ? "" : "s"}</li>
+                                    <li className="ml-10">
+                                        {this.state.downloads.toLocaleString()} Download
+                                        {this.state.downloads === 1 ? "" : "s"}
+                                    </li>
+                                    <li className="ml-10">
+                                        {this.state.stars.toLocaleString()} Star{this.state.stars === 1 ? "" : "s"}
+                                    </li>
+                                    <li className="ml-10">
+                                        {this.state.contributors.toLocaleString()} Contributor
+                                        {this.state.contributors === 1 ? "" : "s"}
+                                    </li>
                                 </ul>
 
                                 <p>and growing!</p>
@@ -68,7 +93,6 @@ export default class Home extends Component {
                     </div>
                 </div>
             </>
-        )
+        );
     }
-
 }

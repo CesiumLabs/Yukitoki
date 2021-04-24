@@ -1,7 +1,7 @@
 import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import "../styles/global.css";
-import { META } from "../config"
+import { META } from "../config";
 
 export default function Application({ Component, pageProps }) {
     return (
@@ -13,12 +13,12 @@ export default function Application({ Component, pageProps }) {
                 <meta property="og:title" content={META.TITLE} />
                 <meta property="og:description" content={META.DESCRIPTION} />
                 <meta property="og:image" content={META.IMAGE} />
-                <meta name="theme-color" content="#4285F4"/>
+                <meta name="theme-color" content="#4285F4" />
                 <link rel="shortcut icon" href="/favicon.png" />
                 <title>{META.TITLE}</title>
             </Head>
 
             <Component {...pageProps} />
         </>
-    )
+    );
 }

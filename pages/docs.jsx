@@ -4,7 +4,6 @@ import { DOCUMENTATION_SOURCE } from "../config";
 import Loader from "../components/Loader";
 
 export default class DocsPage extends Component {
-
     constructor(...props) {
         super(...props);
 
@@ -18,8 +17,8 @@ export default class DocsPage extends Component {
         console.log("fetching docs...");
 
         fetch(DOCUMENTATION_SOURCE)
-            .then(res => res.json())
-            .then(data => {
+            .then((res) => res.json())
+            .then((data) => {
                 this.setState({
                     loading: false,
                     docs: data
@@ -37,5 +36,4 @@ export default class DocsPage extends Component {
         if (this.state.loading) return <Loader />;
         return <Docs docs={this.state.docs} />;
     }
-
 }

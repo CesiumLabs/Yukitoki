@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import SideBar from "./docs/Sidebar"
+import SideBar from "./docs/Sidebar";
 
 export default function Docs({ docs }) {
     return (
@@ -9,5 +9,5 @@ export default function Docs({ docs }) {
             <SideBar docs={docs} />
             <Footer />
         </div>
-    )
+    );
 }

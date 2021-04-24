@@ -9,5 +9,5 @@ export default function index() {
             <Home />
             <Footer />
         </div>
-    )
+    );
 }
