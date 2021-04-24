@@ -5,8 +5,6 @@ import { useEffect } from "react";
 import TypedefViewer from "./TypedefViewer";
 
 export default function Viewer({ data }) {
-    console.log(data);
-
     function highlight() {
         document.querySelectorAll("pre code").forEach((el) => {
             hljs.highlightBlock(el);

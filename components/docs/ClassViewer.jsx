@@ -1,6 +1,6 @@
 import ParamsTable from "./ParamsTable";
-import { PARAMS } from "../../config";
 import TypeLink from "./TypeLink";
+import Link from "next/link";
 
 export default function ClassViewer({ data }) {
     const Props = [
@@ -17,7 +17,7 @@ export default function ClassViewer({ data }) {
             data: data.data.events
         }
     ];
-    const flatten = (t) => Array.isArray(t) ? t.flat(Infinity).join("") : t;
+
     const hasProps = Props.filter((x) => !x).length !== Props.length;
     const charCode = (str) =>
         str
@@ -58,7 +58,7 @@ export default function ClassViewer({ data }) {
                                                 return (
                                                     <div className="prop">
                                                         <span className="title text-gray-200 hover:text-gray-100 border-l-2 border-gray-400 hover:border-blue-500">
-                                                            <a className="cursor-pointer px-2">{m.name}</a>
+                                                            <a className="cursor-pointer px-2" href={`#${data.data.construct.name.replace(/ +/g, "-")}-${m.name.replace(/ +/g, "-")}`}>{m.name}</a>
                                                         </span>
                                                     </div>
                                                 );
@@ -82,7 +82,7 @@ export default function ClassViewer({ data }) {
                                               .map((n) => {
                                                   return (
                                                       <div className="prop py-3 text-gray-200 px-2">
-                                                          <h1 className="cursor-pointer text-xl hover:text-blue-500">{`${
+                                                          <h1 id={`${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`} className="cursor-pointer text-xl hover:text-blue-500">{`${
                                                               m.name === "Events" ? "" : "."
                                                           }${n.name}${
                                                               m.name === "Methods"
