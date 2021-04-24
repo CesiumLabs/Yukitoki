@@ -226,9 +226,7 @@ export default function Sidebar({ docs }) {
                 </div>
 
                 <div className="docs-container px-5 lg:border-l-2 lg:border-gray-300 min-w-min">
-                    <div id="docs-content" className="text-white prose">
-                        <Viewer data={docsContent} />
-                    </div>
+                    <Viewer data={docsContent} />
                 </div>
             </div>
         </div>
