@@ -81,13 +81,13 @@ export default function ClassViewer({ data }) {
                                               .map((n) => {
                                                   return (
                                                       <div className="prop py-3 text-gray-200 px-2">
-                                                          <h1 id={`${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`} className="cursor-pointer text-xl hover:text-blue-500">{`${
+                                                          <h1 id={`${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`} className="cursor-pointer text-xl hover:text-blue-500"><a href={`#${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`}>{`${
                                                               m.name === "Events" ? "" : "."
                                                           }${n.name}${
                                                               m.name === "Methods"
                                                               ? `(${n.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ") || ""})`
                                                                   : ""
-                                                          }`}</h1>
+                                                          }`}</a></h1>
                                                           <ParamsTable
                                                               paramsData={n.params || []}
                                                               description={n.description}
