@@ -7,11 +7,11 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                 <h1 className="text-gray-200 text-lg px-2 py-2" dangerouslySetInnerHTML={{ __html: description }}></h1>
             ) : null}
             {paramsData?.length ? (
-                <table class={`table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
-                    <thead class="justify-between">
-                        <tr class="bg-gray-800">
-                            <th class="px-16 py-2">
-                                <span class="text-gray-300">PARAMETER</span>
+                <table className={`table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
+                    <thead className="justify-between">
+                        <tr className="bg-gray-800">
+                            <th className="px-16 py-2">
+                                <span className="text-gray-300">PARAMETER</span>
                             </th>
                             <th className="px-16 py-2">
                                 <span className="text-gray-300">TYPE</span>
