@@ -11,7 +11,7 @@ export default function Navbar() {
                         <a className="text-3xl font-bold leading-none text-gray-200">{SITE_NAME}</a>
                     </Link>
                     <div className="lg:hidden">
-                        <button className="navbar-burger flex items-center text-green-600 p-3" onClick={() => document.getElementById('mobile_menu').classList.remove('hidden')}>
+                        <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={() => document.getElementById('mobile_menu').classList.remove('hidden')}>
                             <svg className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                             </svg>

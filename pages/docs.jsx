@@ -17,7 +17,7 @@ export default class DocsPage extends Component {
     componentDidMount() {
         console.log("fetching docs...");
 
-        fetch(`${window.location.origin}/api/docs?source=${DOCUMENTATION_SOURCE}`)
+        fetch(DOCUMENTATION_SOURCE)
             .then(res => res.json())
             .then(data => {
                 this.setState({

@@ -15,6 +15,11 @@ const mdconv = new Converter({
 const makeHTML = (md) => mdconv.makeHtml(md);
 
 export default function Sidebar({ docs }) {
+    if (!docs) return (
+        <div className="relative container mx-auto bg-gray-900 min-h-screen">
+            <h1 className="text-white text-xl text-center py-5">Error: Could not load docs! <a className="text-blue-400" href="/docs">Reload?</a></h1>
+        </div>
+    )
     const [docsContent, setDocsContent] = useState({ jsx: false, data: null });
     const data = Object.keys(docs).filter(a => params.includes(a)).map(m => ({ name: m, data: docs[m] }));
     const custom = Object.values(docs.custom);
@@ -27,7 +32,10 @@ export default function Sidebar({ docs }) {
         setDocsContent({ jsx: false, data: makeHTML(doccont.content) });
     }
 
-    useEffect(() => highlight());
+    useEffect(() => {
+        document.body.classList.add("bg-gray-800");
+        highlight();
+    });
 
     const handler = (e) => {
         e.preventDefault();
@@ -55,16 +63,18 @@ export default function Sidebar({ docs }) {
     }
 
     return (
-        <div className="relative container mx-auto">
-            <div className="space-x-4 py-5 flex">
-                <div className="inline-grid">
+        <div className="relative container mx-auto bg-gray-900">
+            <div className="space-x-4 py-5 inline-flex bg-gray-900">
+                <div className="lg:hidden">
+                    <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={() => document.getElementById('doc_mobile').classList.toggle('hidden')}>
+                        <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 22h-24l12-20z" />
+                        </svg>
+                    </button>
+                </div>
+                <div className="hidden sm:block" id="doc_mobile">
                     <div className="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-900 text-gray-50">
                         <div className="flex flex-col top-0 left-0 w-64 bg-gray-900 h-full">
-                            <div className="pl-6 h-20 border-b border-gray-800">
-                                <div className="mr-3 pt-6 relative mx-auto text-gray-600">
-                                    <input className="appearance-none p-3 mx-auto my-auto w-full text-xs font-semibold leading-none bg-gray-50 rounded outline-none" type="text" name="field-name" placeholder="Search" onKeyUp={(e) => e.keyCode === 13 ? handler(e) : null} />
-                                </div>
-                            </div>
                             <div className="overflow-y-auto overflow-x-auto flex-grow">
                                 <ul className="flex flex-col py-6 space-y-1">
                                     {
@@ -136,7 +146,7 @@ export default function Sidebar({ docs }) {
                     </div>
                 </div>
 
-                <div className="inline-grid docs-container px-5 lg:border-l-2 lg:border-gray-300">
+                <div className="docs-container px-5 lg:border-l-2 lg:border-gray-300 min-w-min">
                     <div id="docs-content" className="text-white prose">
                         <Viewer data={docsContent} />
                     </div>
