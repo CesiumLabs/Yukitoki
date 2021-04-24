@@ -59,6 +59,7 @@ module.exports = {
         m3u8Options: 'https://github.com/fent/node-m3u8stream#m3u8streamurl-options',
         CheerioRoot: 'https://cheerio.js.org',
         Response: 'https://developer.mozilla.org/en-US/docs/Web/API/Response',
+        '*': 'https://flow.org/en/docs/types/any',
         any: 'https://flow.org/en/docs/types/any',
         DiscordClient: 'https://discord.js.org/#/docs/main/stable/class/Client',
         DiscordCollection: 'https://discord.js.org/#/docs/collection/master/class/Collection',

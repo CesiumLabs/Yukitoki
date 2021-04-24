@@ -7,39 +7,39 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                 <h1 className="text-gray-200 text-lg px-2 py-2" dangerouslySetInnerHTML={{ __html: description }}></h1>
             ) : null}
             {paramsData?.length ? (
-                <table class={`min-w-full table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
-                    <thead class="justify-between">
-                        <tr class="bg-gray-800">
-                            <th class="px-16 py-2">
-                                <span class="text-gray-300">PARAMETER</span>
+                <table className={`min-w-full table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
+                    <thead className="justify-between">
+                        <tr className="bg-gray-800">
+                            <th className="px-16 py-2">
+                                <span className="text-gray-300">PARAMETER</span>
                             </th>
-                            <th class="px-16 py-2">
-                                <span class="text-gray-300">TYPE</span>
+                            <th className="px-16 py-2">
+                                <span className="text-gray-300">TYPE</span>
                             </th>
                             {paramsData.some((x) => !!x.optional) ? (
-                                <th class="px-16 py-2">
-                                    <span class="text-gray-300">OPTIONAL</span>
+                                <th className="px-16 py-2">
+                                    <span className="text-gray-300">OPTIONAL</span>
                                 </th>
                             ) : paramsData.some((x) => !!x.default) ? (
-                                <th class="px-16 py-2">
-                                    <span class="text-gray-300">DEFAULT</span>
+                                <th className="px-16 py-2">
+                                    <span className="text-gray-300">DEFAULT</span>
                                 </th>
                             ) : null}
-                            <th class="px-16 py-2">
-                                <span class="text-gray-300">DESCRIPTION</span>
+                            <th className="px-16 py-2">
+                                <span className="text-gray-300">DESCRIPTION</span>
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-gray-600 text-white text-center">
+                    <tbody className="bg-gray-600 text-white text-center">
                         {paramsData.map((m, i) => {
                             m.type = Array.isArray(m.type) ? m.type.flat(Infinity)[0] : m.type;
 
                             return (
-                                <tr class="bg-gray-700" key={i}>
+                                <tr className="bg-gray-700" key={i}>
                                     <td>
                                         <span>{m.name}</span>
                                     </td>
-                                    <td class="px-16 py-2 font-semibold">
+                                    <td className="px-16 py-2 font-semibold">
                                         <span className="cursor-pointer">
                                             {PARAMS[m.type] ? (
                                                 <a
@@ -62,7 +62,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                                             <span>{m.default}</span>
                                         </td>
                                     ) : null}
-                                    <td class="px-16 py-2">
+                                    <td className="px-16 py-2">
                                         <span
                                             dangerouslySetInnerHTML={{
                                                 __html: m.description || "<b>Documentation Missing</b>"

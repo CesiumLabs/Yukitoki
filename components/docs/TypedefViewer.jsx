@@ -23,7 +23,7 @@ export default function TypedefViewer({ data }) {
                     </div>
                 ) : null}
                 {data.data.props?.length ? (
-                    <div class="py-5">
+                    <div className="py-5">
                         <ParamsTable paramsData={data.data.props} />
                     </div>
                 ) : null}

@@ -1,4 +1,6 @@
 import ParamsTable from "./ParamsTable";
+import { PARAMS } from "../../config";
+import TypeLink from "./TypeLink";
 
 export default function ClassViewer({ data }) {
     const Props = [
@@ -15,6 +17,7 @@ export default function ClassViewer({ data }) {
             data: data.data.events
         }
     ];
+    const flatten = (t) => Array.isArray(t) ? t.flat(Infinity).join("") : t;
     const hasProps = Props.filter((x) => !x).length !== Props.length;
     const charCode = (str) =>
         str
@@ -27,7 +30,7 @@ export default function ClassViewer({ data }) {
         <section>
             <div>
                 <h1 className="text-white text-3xl font-bold">
-                    new {data.data.construct.name}({data.data.construct.params?.map((m) => m.name).join(", ")})
+                    new {data.data.construct.name}({data.data.construct.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
                 </h1>
                 {data.data.description ? (
                     <div
@@ -38,7 +41,7 @@ export default function ClassViewer({ data }) {
             </div>
             <div>
                 {data.data.construct.params?.length ? (
-                    <div class="py-5">
+                    <div className="py-5">
                         <ParamsTable paramsData={data.data.construct.params} />
                     </div>
                 ) : null}
@@ -73,7 +76,7 @@ export default function ClassViewer({ data }) {
                               return (
                                   <div>
                                       <h1 className="title font-semibold text-gray-200 text-3xl">{m.name}</h1>
-                                      <div className="flex flex-col py-2">
+                                      <div className="flex flex-col py-3">
                                           {m.data
                                               .sort((a, b) => charCode(a.name) - charCode(b.name))
                                               .map((n) => {
@@ -83,7 +86,7 @@ export default function ClassViewer({ data }) {
                                                               m.name === "Events" ? "" : "."
                                                           }${n.name}${
                                                               m.name === "Methods"
-                                                                  ? `(${n.params?.map((m) => m.name).join(", ") || ""})`
+                                                              ? `(${n.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ") || ""})`
                                                                   : ""
                                                           }`}</h1>
                                                           <ParamsTable
@@ -91,6 +94,8 @@ export default function ClassViewer({ data }) {
                                                               description={n.description}
                                                               withBorder="true"
                                                           />
+                                                          {n.type?.length ? <h1 className="text-xl text-gray-200">Type: <TypeLink type={n.type} /></h1> : null}
+                                                          {n.returns?.length ? <h1 className="text-xl text-gray-200">Returns: <TypeLink type={n.returns} /></h1> : null}
                                                       </div>
                                                   );
                                               })}
