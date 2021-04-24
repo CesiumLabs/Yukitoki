@@ -15,15 +15,12 @@ export default function Viewer({ data }) {
 
     useEffect(() => highlight());
 
-    if (!data.jsx) return (
-        <div id="docs-content" className="text-white prose">
-            <div dangerouslySetInnerHTML={{ __html: data.data }}></div>
-        </div>
-    )
+    if (!data.jsx)
+        return (
+            <div id="docs-content" className="text-white prose">
+                <div dangerouslySetInnerHTML={{ __html: data.data }}></div>
+            </div>
+        );
 
-    return data.raw.head === "classes" ? (
-        <ClassViewer data={data} />
-    ) : (
-        <TypedefViewer data={data} />
-    );
+    return data.raw.head === "classes" ? <ClassViewer data={data} /> : <TypedefViewer data={data} />;
 }

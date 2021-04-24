@@ -11,16 +11,23 @@ export default function TypedefViewer({ data }) {
                 ) : null}
             </div>
             <div>
-                {
-                    data.data.type ? <div>
+                {data.data.type ? (
+                    <div>
                         <h1 className="text-gray-200 text-2xl font-semibold pt-10 pb-2">Types</h1>
-                        <a className="text-blue-400 font-semibold text-lg cursor-pointer hover:text-blue-300" href={PARAMS[data.data.type]}>{data.data.type}</a>
-                    </div> : null
-                }
-                {
-                    data.data.props?.length ? <div class="py-5"><ParamsTable paramsData={data.data.props} /></div> : null
-                }
+                        <a
+                            className="text-blue-400 font-semibold text-lg cursor-pointer hover:text-blue-300"
+                            href={PARAMS[data.data.type]}
+                        >
+                            {data.data.type}
+                        </a>
+                    </div>
+                ) : null}
+                {data.data.props?.length ? (
+                    <div class="py-5">
+                        <ParamsTable paramsData={data.data.props} />
+                    </div>
+                ) : null}
             </div>
         </section>
-    )
+    );
 }
