@@ -29,20 +29,20 @@ export default function ClassViewer({ data }) {
         <section>
             <div>
                 <h1 className="text-white text-3xl font-bold">
-                    new {data.data.construct.name}(
-                    {data.data.construct.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
+                    new {data.data.construct?.name ?? data.data.name}(
+                    {data.data.construct?.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
                 </h1>
                 {data.data.description ? (
                     <div
                         className="text-white mt-0"
-                        dangerouslySetInnerHTML={{ __html: data.data.construct.description }}
+                        dangerouslySetInnerHTML={{ __html: data.data.construct?.description ?? data.data.description }}
                     ></div>
                 ) : null}
             </div>
             <div>
-                {data.data.construct.params?.length ? (
+                {data.data.construct?.params?.length ? (
                     <div className="py-5">
-                        <ParamsTable paramsData={data.data.construct.params} />
+                        <ParamsTable paramsData={data.data.construct?.params} />
                     </div>
                 ) : null}
                 {hasProps ? (
@@ -60,7 +60,7 @@ export default function ClassViewer({ data }) {
                                                         <span className="title text-gray-200 hover:text-gray-100 border-l-2 border-gray-400 hover:border-blue-500">
                                                             <a
                                                                 className="cursor-pointer px-2"
-                                                                href={`#${data.data.construct.name.replace(
+                                                                href={`#${data.data.name.replace(
                                                                     / +/g,
                                                                     "-"
                                                                 )}-${m.name.replace(/ +/g, "-")}`}
@@ -91,14 +91,14 @@ export default function ClassViewer({ data }) {
                                                   return (
                                                       <div className="prop py-3 text-gray-200 px-2">
                                                           <h1
-                                                              id={`${data.data.construct.name.replace(
+                                                              id={`${data.data.name.replace(
                                                                   / +/g,
                                                                   "-"
                                                               )}-${n.name.replace(/ +/g, "-")}`}
                                                               className="cursor-pointer text-xl hover:text-blue-500"
                                                           >
                                                               <a
-                                                                  href={`#${data.data.construct.name.replace(
+                                                                  href={`#${data.data.name.replace(
                                                                       / +/g,
                                                                       "-"
                                                                   )}-${n.name.replace(/ +/g, "-")}`}

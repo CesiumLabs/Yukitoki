@@ -40,9 +40,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                                         <span>{m.name}</span>
                                     </td>
                                     <td className="px-16 py-2 font-semibold">
-                                        <span className="cursor-pointer">
-                                            {<TypeLink type={m.type} />}
-                                        </span>
+                                        <span className="cursor-pointer">{<TypeLink type={m.type} />}</span>
                                     </td>
                                     {paramsData.some((x) => !!x.optional) ? (
                                         <td>
