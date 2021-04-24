@@ -7,7 +7,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                 <h1 className="text-gray-200 text-lg px-2 py-2" dangerouslySetInnerHTML={{ __html: description }}></h1>
             ) : null}
             {paramsData?.length ? (
-                <table class={`min-w-full table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
+                <table class={`table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
                     <thead class="justify-between">
                         <tr class="bg-gray-800">
                             <th class="px-16 py-2">
