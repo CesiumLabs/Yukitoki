@@ -1,4 +1,5 @@
 import { PARAMS } from "../../config";
+import TypeLink from "./TypeLink";
 
 export default function ParamsTable({ paramsData, withBorder, description }) {
     return (
@@ -41,16 +42,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                                     </td>
                                     <td className="px-16 py-2 font-semibold">
                                         <span className="cursor-pointer">
-                                            {PARAMS[m.type] ? (
-                                                <a
-                                                    className="text-blue-400 hover:text-blue-300 transition"
-                                                    href={PARAMS[m.type]}
-                                                >
-                                                    {m.type}
-                                                </a>
-                                            ) : (
-                                                m.type
-                                            )}
+                                            {<TypeLink type={m.type} />}
                                         </span>
                                     </td>
                                     {paramsData.some((x) => !!x.optional) ? (
