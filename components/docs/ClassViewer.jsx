@@ -29,7 +29,8 @@ export default function ClassViewer({ data }) {
         <section>
             <div>
                 <h1 className="text-white text-3xl font-bold">
-                    new {data.data.construct.name}({data.data.construct.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
+                    new {data.data.construct.name}(
+                    {data.data.construct.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
                 </h1>
                 {data.data.description ? (
                     <div
@@ -57,7 +58,15 @@ export default function ClassViewer({ data }) {
                                                 return (
                                                     <div className="prop">
                                                         <span className="title text-gray-200 hover:text-gray-100 border-l-2 border-gray-400 hover:border-blue-500">
-                                                            <a className="cursor-pointer px-2" href={`#${data.data.construct.name.replace(/ +/g, "-")}-${m.name.replace(/ +/g, "-")}`}>{m.name}</a>
+                                                            <a
+                                                                className="cursor-pointer px-2"
+                                                                href={`#${data.data.construct.name.replace(
+                                                                    / +/g,
+                                                                    "-"
+                                                                )}-${m.name.replace(/ +/g, "-")}`}
+                                                            >
+                                                                {m.name}
+                                                            </a>
                                                         </span>
                                                     </div>
                                                 );
@@ -81,20 +90,48 @@ export default function ClassViewer({ data }) {
                                               .map((n) => {
                                                   return (
                                                       <div className="prop py-3 text-gray-200 px-2">
-                                                          <h1 id={`${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`} className="cursor-pointer text-xl hover:text-blue-500"><a href={`#${data.data.construct.name.replace(/ +/g, "-")}-${n.name.replace(/ +/g, "-")}`}>{`${
-                                                              m.name === "Events" ? "" : "."
-                                                          }${n.name}${
-                                                              m.name === "Methods"
-                                                              ? `(${n.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ") || ""})`
-                                                                  : ""
-                                                          }`}</a></h1>
+                                                          <h1
+                                                              id={`${data.data.construct.name.replace(
+                                                                  / +/g,
+                                                                  "-"
+                                                              )}-${n.name.replace(/ +/g, "-")}`}
+                                                              className="cursor-pointer text-xl hover:text-blue-500"
+                                                          >
+                                                              <a
+                                                                  href={`#${data.data.construct.name.replace(
+                                                                      / +/g,
+                                                                      "-"
+                                                                  )}-${n.name.replace(/ +/g, "-")}`}
+                                                              >{`${m.name === "Events" ? "" : "."}${n.name}${
+                                                                  m.name === "Methods"
+                                                                      ? `(${
+                                                                            n.params
+                                                                                ?.map(
+                                                                                    (m) =>
+                                                                                        `${m.name}${
+                                                                                            m.optional ? "?" : ""
+                                                                                        }`
+                                                                                )
+                                                                                .join(", ") || ""
+                                                                        })`
+                                                                      : ""
+                                                              }`}</a>
+                                                          </h1>
                                                           <ParamsTable
                                                               paramsData={n.params || []}
                                                               description={n.description}
                                                               withBorder="true"
                                                           />
-                                                          {n.type?.length ? <h1 className="text-xl text-gray-200">Type: <TypeLink type={n.type} /></h1> : null}
-                                                          {n.returns?.length ? <h1 className="text-xl text-gray-200">Returns: <TypeLink type={n.returns} /></h1> : null}
+                                                          {n.type?.length ? (
+                                                              <h1 className="text-xl text-gray-200">
+                                                                  Type: <TypeLink type={n.type} />
+                                                              </h1>
+                                                          ) : null}
+                                                          {n.returns?.length ? (
+                                                              <h1 className="text-xl text-gray-200">
+                                                                  Returns: <TypeLink type={n.returns} />
+                                                              </h1>
+                                                          ) : null}
                                                       </div>
                                                   );
                                               })}
