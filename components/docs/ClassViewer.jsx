@@ -1,6 +1,5 @@
 import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
-import Link from "next/link";
 
 export default function ClassViewer({ data }) {
     const Props = [

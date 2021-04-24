@@ -71,5 +71,6 @@ module.exports = {
         YTDLDownloadOptions: 'https://github.com/fent/node-ytdl-core#ytdlurl-options',
         DiscordUser: 'https://discord.js.org/#/docs/main/stable/class/User',
         DiscordMessageCollector: 'https://discord.js.org/#/docs/main/stable/class/MessageCollector',
-    }
+    },
+    LOCAL_TYPES: [/* Leave this empty */]
 };
