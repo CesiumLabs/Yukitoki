@@ -98,7 +98,6 @@ export default function Sidebar({ docs }) {
                                         /* Custom Doc File */
                                         custom.map((m, i) => {
                                             const params = Object.values(m.files);
-                                            const keys = Object.keys(m.files);
 
                                             return (
                                                 <>
