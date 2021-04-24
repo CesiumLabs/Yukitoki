@@ -37,12 +37,10 @@ export default function Sidebar({ docs }) {
         highlight();
     });
 
-    const handler = (e) => {
-        e.preventDefault();
-    }
+    const handler = (e) => e.preventDefault();
 
     function navigate(navigateTo, e, notCustom = false) {
-        e.preventDefault();
+        handler(e);
 
         if (!notCustom) {
             const loc = custom.find(x => x.files[navigateTo] !== undefined);
@@ -66,7 +64,7 @@ export default function Sidebar({ docs }) {
         <div className="relative container mx-auto bg-gray-900">
             <div className="space-x-4 py-5 inline-flex bg-gray-900">
                 <div className="lg:hidden">
-                    <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={() => document.getElementById('doc_mobile').classList.toggle('hidden')}>
+                    <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={(e) => handler(e) && document.getElementById('doc_mobile').classList.toggle('hidden')}>
                         <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M24 22h-24l12-20z" />
                         </svg>
