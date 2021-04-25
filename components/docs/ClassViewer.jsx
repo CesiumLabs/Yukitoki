@@ -1,5 +1,6 @@
 import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
+import ParamsParser from "./ParamsParser";
 
 export default function ClassViewer({ data }) {
     const Props = [
@@ -33,10 +34,10 @@ export default function ClassViewer({ data }) {
                     {data.data.construct?.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
                 </h1>
                 {data.data.description ? (
-                    <div
+                    <ParamsParser
                         className="text-white mt-0"
-                        dangerouslySetInnerHTML={{ __html: data.data.construct?.description ?? data.data.description }}
-                    ></div>
+                        paramData={data.data.construct?.description ?? data.data.description}
+                    />
                 ) : null}
             </div>
             <div>

@@ -1,4 +1,5 @@
 import TypeLink from "./TypeLink";
+import ParamsParser from "./ParamsParser";
 
 export default function ParamsTable({ paramsData, withBorder, description }) {
     return (
@@ -52,11 +53,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                                         </td>
                                     ) : null}
                                     <td className="px-16 py-2">
-                                        <span
-                                            dangerouslySetInnerHTML={{
-                                                __html: m.description || "<b>Documentation Missing</b>"
-                                            }}
-                                        ></span>
+                                        <ParamsParser paramData={m.description} />
                                     </td>
                                 </tr>
                             );

@@ -1,5 +1,6 @@
 import ParamsTable from "./ParamsTable";
 import { PARAMS } from "../../config";
+import ParamsParser from "./ParamsParser";
 
 export default function TypedefViewer({ data }) {
     return (
@@ -7,7 +8,7 @@ export default function TypedefViewer({ data }) {
             <div>
                 <h1 className="text-white text-3xl font-bold">{data.data.name}</h1>
                 {data.data.description ? (
-                    <div className="text-white mt-0" dangerouslySetInnerHTML={{ __html: data.data.description }}></div>
+                    <ParamsParser className="text-white mt-0" paramData={data.data.description} />
                 ) : null}
             </div>
             <div>
