@@ -1,6 +1,7 @@
 import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
 import ParamsParser from "./ParamsParser";
+import Special from "./Special";
 
 export default function ClassViewer({ data }) {
     const Props = [
@@ -116,7 +117,7 @@ export default function ClassViewer({ data }) {
                                                                                 .join(", ") || ""
                                                                         })`
                                                                       : ""
-                                                              }`}</a>
+                                                              }`}{<Special prop={n} />}</a>
                                                           </h1>
                                                           <ParamsTable
                                                               paramsData={n.params || []}
