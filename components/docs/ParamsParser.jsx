@@ -11,7 +11,5 @@ export default function ParamsParser({ paramData, paramsData }) {
     const data = paramData ?? paramsData ?? "**Documentation Missing**";
     const html = converter.makeHtml(data);
 
-    return (
-        <div className="text-white" dangerouslySetInnerHTML={{ __html: html }}></div>
-    )
+    return <div className="text-white" dangerouslySetInnerHTML={{ __html: html }}></div>;
 }

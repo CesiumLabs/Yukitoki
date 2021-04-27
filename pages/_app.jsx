@@ -2,8 +2,11 @@ import Head from "next/head";
 import "tailwindcss/tailwind.css";
 import "../styles/global.css";
 import { META } from "../config";
+import { useEffect } from "react";
 
 export default function Application({ Component, pageProps }) {
+    useEffect(() => document.body.classList.add("bg-gray-900"));
+
     return (
         <>
             <Head>

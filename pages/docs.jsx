@@ -2,6 +2,7 @@ import { Component } from "react";
 import Docs from "../components/Docs";
 import { DOCUMENTATION_SOURCE } from "../config";
 import Loader from "../components/Loader";
+import ErrorPage from "../components/docs/Error";
 
 export default class DocsPage extends Component {
     constructor(...props) {
@@ -19,6 +20,9 @@ export default class DocsPage extends Component {
         fetch(DOCUMENTATION_SOURCE)
             .then((res) => res.json())
             .then((data) => {
+                // set last fetched doc in local storage
+                window.localStorage.setItem("docs", JSON.stringify(data));
+
                 this.setState({
                     loading: false,
                     docs: data
@@ -27,13 +31,21 @@ export default class DocsPage extends Component {
                 console.log("Successfully fetched docs!");
             })
             .catch(() => {
-                this.setState({ loading: false, docs: null });
+                // load the cached documentation if we can't fetch
+                const p = (d) => {
+                    try {
+                        return JSON.parse(d);
+                    } catch {
+                        return null;
+                    }
+                };
+                this.setState({ loading: false, docs: p(window.localStorage.getItem("docs")) });
                 console.warn("Could not fetch docs!");
             });
     }
 
     render() {
         if (this.state.loading) return <Loader />;
-        return <Docs docs={this.state.docs} />;
+        return this.state.docs ? <Docs docs={this.state.docs} /> : <ErrorPage />;
     }
 }

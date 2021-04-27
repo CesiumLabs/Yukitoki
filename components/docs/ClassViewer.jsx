@@ -20,12 +20,6 @@ export default function ClassViewer({ data }) {
     ];
 
     const hasProps = Props.filter((x) => !x).length !== Props.length;
-    const charCode = (str) =>
-        str
-            .toUpperCase()
-            .split("")
-            .map((m) => m.charCodeAt(0))
-            .reduce((a, b) => a + b, 0);
 
     return (
         <section>
@@ -55,7 +49,11 @@ export default function ClassViewer({ data }) {
                                     <span className="title font-semibold text-gray-200">{m.name}</span>
                                     <div className="flex flex-col">
                                         {m.data
-                                            .sort((a, b) => charCode(a.name) - charCode(b.name))
+                                            .sort(
+                                                (a, b) =>
+                                                    a.name.toLowerCase().charCodeAt() -
+                                                    b.name.toLowerCase().charCodeAt()
+                                            )
                                             .map((m) => {
                                                 return (
                                                     <div className="prop">
@@ -88,7 +86,11 @@ export default function ClassViewer({ data }) {
                                       <h1 className="title font-semibold text-gray-200 text-3xl">{m.name}</h1>
                                       <div className="flex flex-col py-3">
                                           {m.data
-                                              .sort((a, b) => charCode(a.name) - charCode(b.name))
+                                              .sort(
+                                                  (a, b) =>
+                                                      a.name.toLowerCase().charCodeAt() -
+                                                      b.name.toLowerCase().charCodeAt()
+                                              )
                                               .map((n) => {
                                                   return (
                                                       <div className="prop py-3 text-gray-200 px-2">
@@ -104,20 +106,23 @@ export default function ClassViewer({ data }) {
                                                                       / +/g,
                                                                       "-"
                                                                   )}-${n.name.replace(/ +/g, "-")}`}
-                                                              >{`${m.name === "Events" ? "" : "."}${n.name}${
-                                                                  m.name === "Methods"
-                                                                      ? `(${
-                                                                            n.params
-                                                                                ?.map(
-                                                                                    (m) =>
-                                                                                        `${m.name}${
-                                                                                            m.optional ? "?" : ""
-                                                                                        }`
-                                                                                )
-                                                                                .join(", ") || ""
-                                                                        })`
-                                                                      : ""
-                                                              }`}{<Special prop={n} />}</a>
+                                                              >
+                                                                  {`${m.name === "Events" ? "" : "."}${n.name}${
+                                                                      m.name === "Methods"
+                                                                          ? `(${
+                                                                                n.params
+                                                                                    ?.map(
+                                                                                        (m) =>
+                                                                                            `${m.name}${
+                                                                                                m.optional ? "?" : ""
+                                                                                            }`
+                                                                                    )
+                                                                                    .join(", ") || ""
+                                                                            })`
+                                                                          : ""
+                                                                  }`}
+                                                                  {<Special prop={n} />}
+                                                              </a>
                                                           </h1>
                                                           <ParamsTable
                                                               paramsData={n.params || []}

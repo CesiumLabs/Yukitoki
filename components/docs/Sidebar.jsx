@@ -54,7 +54,6 @@ export default function Sidebar({ docs }) {
     }
 
     useEffect(() => {
-        document.body.classList.add("bg-gray-800");
         highlight();
     });
 
