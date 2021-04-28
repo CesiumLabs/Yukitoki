@@ -21,7 +21,8 @@ module.exports = {
         DESCRIPTION: "🎧 Complete framework to simplify the implementation of music commands using Discord.js",
         IMAGE: "https://snowdocs.vercel.app/favicon.png"
     },
-    DOCUMENTATION_SOURCE: "https://raw.githubusercontent.com/Androz2091/discord-player/docs/rewrite.json",
+    DOCUMENTATION_SOURCE: "https://raw.githubusercontent.com/Androz2091/discord-player/docs/master.json",
+    BRANCH: "master",
     PARAMS: {
         string: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
         String: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',

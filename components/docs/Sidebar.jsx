@@ -181,7 +181,7 @@ export default function Sidebar({ docs }) {
                                                             </div>
                                                         </div>
                                                     </li>
-                                                    {params.map((n, j) => {
+                                                    {params.sort((a, b) => m.data[a].name.toLowerCase().charCodeAt(0) - m.data[b].name.toLowerCase().charCodeAt(0)).map((n, j) => {
                                                         return (
                                                             <li key={i + j}>
                                                                 <Link href={`/docs?path=${m.name}/${m.data[n].name}`}>

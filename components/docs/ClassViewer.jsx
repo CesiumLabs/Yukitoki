@@ -2,6 +2,11 @@ import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
 import ParamsParser from "./ParamsParser";
 import Special from "./Special";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { GITHUB_LINK, BRANCH } from "../../config";
+
+const constructLink = (path, file, line) => `${GITHUB_LINK}/blob/${BRANCH}/${path}/${file}#L${line}`;
 
 export default function ClassViewer({ data }) {
     const Props = [
@@ -27,6 +32,9 @@ export default function ClassViewer({ data }) {
                 <h1 className="text-white text-3xl font-bold">
                     new {data.data.construct?.name ?? data.data.name}(
                     {data.data.construct?.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
+                <a class="float-right" href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}>
+                    <FontAwesomeIcon icon={faCode} class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer" />
+                </a>
                 </h1>
                 {data.data.description ? (
                     <ParamsParser
@@ -122,6 +130,9 @@ export default function ClassViewer({ data }) {
                                                                           : ""
                                                                   }`}
                                                                   {<Special prop={n} />}
+                                                              </a>
+                                                              <a class="float-right" href={constructLink(n.meta.path, n.meta.file, n.meta.line)}>
+                                                                  <FontAwesomeIcon icon={faCode} class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer" />
                                                               </a>
                                                           </h1>
                                                           <ParamsTable

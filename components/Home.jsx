@@ -1,5 +1,7 @@
 import { Component } from "react";
 import { DESCRIPTION, DISCORD_INVITE, INSTALL_COMMAND, SITE_NAME, STATS, GITHUB_LINK } from "../config";
+import { faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Home extends Component {
     constructor(...props) {
@@ -38,11 +40,10 @@ export default class Home extends Component {
                             <div className="flex justify-center align-center mt-20 mb-20">
                                 <code
                                     className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md"
-                                    title="Click to copy"
-                                    onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})}
                                 >
                                     <h1 className="text-lg">{INSTALL_COMMAND}</h1>
                                 </code>
+                                <FontAwesomeIcon title="Click to copy" icon={faClipboard} className="w-10 h-10 text-white hover:text-gray-300 my-1 cursor-pointer" onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch(e => { })} />
                             </div>
 
                             <div className="buttons flex space-x-2 justify-center align-center mb-10">

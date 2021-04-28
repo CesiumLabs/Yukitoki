@@ -24,6 +24,10 @@
   },
   "homepage": "https://github.com/DevSnowflake/docs#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.35",
+    "@fortawesome/free-brands-svg-icons": "^5.15.3",
+    "@fortawesome/free-solid-svg-icons": "^5.15.3",
+    "@fortawesome/react-fontawesome": "^0.1.14",
     "@tailwindcss/typography": "^0.4.0",
     "highlight.js": "^10.7.2",
     "next": "^10.0.0",

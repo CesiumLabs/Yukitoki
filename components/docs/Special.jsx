@@ -4,7 +4,7 @@ export default function Special({ prop }) {
         static: "static"
     };
 
-    const possible = ["static", "readonly", "private", "abstract"];
+    const possible = ["static", "readonly", "private", "abstract", "deprecated"];
 
     return (
         <>
