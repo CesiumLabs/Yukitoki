@@ -33,7 +33,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                     </thead>
                     <tbody className="bg-gray-600 text-white text-center">
                         {paramsData.map((m, i) => {
-                            m.type = Array.isArray(m.type) ? m.type.flat(Infinity)[0] : m.type;
+                            m.type = Array.isArray(m.type) ? m.type.flat(Infinity).map((n, j) => <TypeLink key={j} type={n} />) : m.type;
 
                             return (
                                 <tr className="bg-gray-700" key={i}>
@@ -41,7 +41,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                                         <span>{m.name}</span>
                                     </td>
                                     <td className="px-16 py-2 font-semibold">
-                                        <span className="cursor-pointer">{<TypeLink type={m.type} />}</span>
+                                        <span className="cursor-pointer">{m.type}</span>
                                     </td>
                                     {paramsData.some((x) => !!x.optional) ? (
                                         <td>
