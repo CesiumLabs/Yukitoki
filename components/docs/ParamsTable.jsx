@@ -33,7 +33,9 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                     </thead>
                     <tbody className="bg-gray-600 text-white text-center">
                         {paramsData.map((m, i) => {
-                            m.type = Array.isArray(m.type) ? m.type.flat(Infinity).map((n, j) => <TypeLink key={j} type={n} />) : m.type;
+                            m.type = Array.isArray(m.type)
+                                ? m.type.flat(Infinity).map((n, j) => <TypeLink key={j} type={n} />)
+                                : m.type;
 
                             return (
                                 <tr className="bg-gray-700" key={i}>
