@@ -12,7 +12,10 @@ export default function TypedefViewer({ data }) {
         <section>
             <div>
                 <h1 className="text-white text-3xl font-bold">{data.data.name}</h1>
-                <a class="float-right" href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}>
+                <a
+                    class="float-right"
+                    href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}
+                >
                     <FontAwesomeIcon icon={faCode} class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer" />
                 </a>
                 {data.data.description ? (
