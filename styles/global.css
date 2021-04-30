@@ -148,7 +148,7 @@ body {
 }
 
 blockquote {
-  transition: .8s;
+  transition: .3s;
   border-radius: 4px;
   padding-right: 2px;
 }
@@ -180,4 +180,12 @@ blockquote:hover {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #0f66b8; 
+}
+
+#paramsTable :is(th, td) {
+  @apply px-6 py-4;
+}
+
+:not(pre) code {
+  @apply bg-gray-700 px-1 py-0.5 rounded mx-0.5;
 }

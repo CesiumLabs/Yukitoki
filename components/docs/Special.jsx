@@ -12,7 +12,7 @@ export default function Special({ prop }) {
                 return m === prop.scope || prop[m] ? (
                     <span
                         key={i}
-                        className="bg-blue-500 text-white font-semibold text-sm uppercase px-1 py-1 rounded-lg mx-3 cursor-help"
+                        className="bg-blue-500 text-white font-semibold text-xs uppercase px-2 py-1 rounded ml-3 cursor-help"
                         title={`This prop is ${types[m]}.`}
                     >
                         {types[m]}

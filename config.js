@@ -73,5 +73,8 @@ module.exports = {
         DiscordUser: 'https://discord.js.org/#/docs/main/stable/class/User',
         DiscordMessageCollector: 'https://discord.js.org/#/docs/main/stable/class/MessageCollector',
     },
-    LOCAL_TYPES: [/* Leave this empty */]
+    LOCAL_TYPES: [/* Leave this empty */],
+    UTILS: {
+        PATH_PARSER: /\/(.*)(.md)$/
+    }
 };

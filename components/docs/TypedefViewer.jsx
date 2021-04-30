@@ -1,8 +1,7 @@
+import Title from "./Title";
 import ParamsTable from "./ParamsTable";
 import { PARAMS } from "../../config";
 import ParamsParser from "./ParamsParser";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GITHUB_LINK, BRANCH } from "../../config";
 
 const constructLink = (path, file, line) => `${GITHUB_LINK}/blob/${BRANCH}/${path}/${file}#L${line}`;
@@ -11,15 +10,11 @@ export default function TypedefViewer({ data }) {
     return (
         <section>
             <div>
-                <h1 className="text-white text-3xl font-bold">{data.data.name}</h1>
-                <a
-                    class="float-right"
-                    href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}
-                >
-                    <FontAwesomeIcon icon={faCode} class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer" />
-                </a>
+                <div className="pb-2">
+                    <Title title={data.data.name} source={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)} />
+                </div>
                 {data.data.description ? (
-                    <ParamsParser className="text-white mt-0" paramData={data.data.description} />
+                    <ParamsParser className="text-white" paramData={data.data.description} />
                 ) : null}
             </div>
             <div>

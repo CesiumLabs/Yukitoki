@@ -24,7 +24,7 @@ export default function TypeLink({ type }) {
                 return !found.local ? (
                     <a
                         key={i}
-                        className={`${
+                        className={` ${
                             found
                                 ? "text-blue-400 hover:text-blue-300 cursor-pointer"
                                 : "text-gray-100 hover:text-gray-300"

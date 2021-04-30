@@ -1,6 +1,6 @@
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import SideBar from "./docs/Sidebar";
+import Layout from "./docs/Layout";
 import { LOCAL_TYPES } from "../config";
 
 export default function Docs({ docs }) {
@@ -21,7 +21,9 @@ export default function Docs({ docs }) {
     return (
         <div className="bg-gray-900">
             <Navbar />
-            <SideBar docs={docs} />
+            <div className="py-6">
+                <Layout docs={docs} />
+            </div>
             <Footer />
         </div>
     );

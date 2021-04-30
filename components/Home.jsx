@@ -37,27 +37,27 @@ export default class Home extends Component {
                                 </h1>
                             </div>
 
-                            <div className="flex justify-center align-center mt-20 mb-20">
-                                <code className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md">
+                            <div className="flex justify-center items-center mt-20 mb-20">
+                                <code className=" text-white bg-gray-600 font-bold leading-none px-5 py-3 rounded-md">
                                     <h1 className="text-lg">{INSTALL_COMMAND}</h1>
                                 </code>
                                 <FontAwesomeIcon
                                     title="Click to copy"
                                     icon={faClipboard}
-                                    className="w-10 h-10 text-white hover:text-gray-300 my-1 cursor-pointer"
+                                    className="ml-4 w-10 h-10 text-white hover:text-gray-300 cursor-pointer"
                                     onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})}
                                 />
                             </div>
 
                             <div className="buttons flex space-x-2 justify-center align-center mb-10">
                                 <a
-                                    className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400"
+                                    className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-base text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400"
                                     href={GITHUB_LINK}
                                 >
                                     GitHub
                                 </a>
                                 <a
-                                    className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-400"
+                                    className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-base text-white font-bold rounded-l-xl rounded-t-xl transition duration-400"
                                     href={DISCORD_INVITE}
                                 >
                                     Discord
@@ -69,7 +69,7 @@ export default class Home extends Component {
 
                 <div className="bg-gray-900">
                     <div className="container mx-auto">
-                        <div className="py-5 lg:flex lg:items-center lg:justify-center lg:align-center lg:space-x-20 px-3">
+                        <div className="my-14 lg:flex lg:items-center lg:justify-center lg:align-center lg:space-x-20 px-3">
                             <div className="text-white">
                                 <h1 className="text-2xl text-center font-bold">About</h1>
                                 <p dangerouslySetInnerHTML={{ __html: DESCRIPTION }}></p>
@@ -77,15 +77,15 @@ export default class Home extends Component {
 
                             <div className="text-white">
                                 <h1 className="text-2xl text-center font-bold">Statistics</h1>
-                                <ul style={{ listStyle: "disc" }}>
-                                    <li className="ml-10">
+                                <ul className="list-inside list-disc">
+                                    <li>
                                         {this.state.downloads.toLocaleString()} Download
                                         {this.state.downloads === 1 ? "" : "s"}
                                     </li>
-                                    <li className="ml-10">
+                                    <li>
                                         {this.state.stars.toLocaleString()} Star{this.state.stars === 1 ? "" : "s"}
                                     </li>
-                                    <li className="ml-10">
+                                    <li>
                                         {this.state.contributors.toLocaleString()} Contributor
                                         {this.state.contributors === 1 ? "" : "s"}
                                     </li>

@@ -1,9 +1,10 @@
+import Title from "./Title";
+import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
 import ParamsParser from "./ParamsParser";
 import Special from "./Special";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { GITHUB_LINK, BRANCH } from "../../config";
 
 const constructLink = (path, file, line) => `${GITHUB_LINK}/blob/${BRANCH}/${path}/${file}#L${line}`;
@@ -29,19 +30,7 @@ export default function ClassViewer({ data }) {
     return (
         <section>
             <div>
-                <h1 className="text-white text-3xl font-bold">
-                    new {data.data.construct?.name ?? data.data.name}(
-                    {data.data.construct?.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ")})
-                    <a
-                        class="float-right"
-                        href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}
-                    >
-                        <FontAwesomeIcon
-                            icon={faCode}
-                            class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer"
-                        />
-                    </a>
-                </h1>
+                <Title title={`new ${data.data.construct?.name ?? data.data.name}(${data.data.construct?.params?.map((m) => `${m.name}${m.optional ? "?" : ""}`).join(", ") || ""})`} source={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)} />
                 {data.data.description ? (
                     <ParamsParser
                         className="text-white mt-0"
@@ -56,7 +45,7 @@ export default function ClassViewer({ data }) {
                     </div>
                 ) : null}
                 {hasProps ? (
-                    <div className="grid grid-cols-3 gap-4 py-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 py-10">
                         {Props.filter((x) => !!x.data).map((m) => {
                             return (
                                 <div>
@@ -107,7 +96,7 @@ export default function ClassViewer({ data }) {
                                               )
                                               .map((n) => {
                                                   return (
-                                                      <div className="prop py-3 text-gray-200 px-2">
+                                                      <div className="prop py-3 text-gray-200">
                                                           <h1
                                                               id={`${data.data.name.replace(
                                                                   / +/g,
@@ -138,7 +127,7 @@ export default function ClassViewer({ data }) {
                                                                   {<Special prop={n} />}
                                                               </a>
                                                               <a
-                                                                  class="float-right"
+                                                                  className="float-right"
                                                                   href={constructLink(
                                                                       n.meta.path,
                                                                       n.meta.file,
@@ -147,10 +136,11 @@ export default function ClassViewer({ data }) {
                                                               >
                                                                   <FontAwesomeIcon
                                                                       icon={faCode}
-                                                                      class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer"
+                                                                      className="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer"
                                                                   />
                                                               </a>
                                                           </h1>
+                                                          {/* <Title title={} source={} /> */}
                                                           <ParamsTable
                                                               paramsData={n.params || []}
                                                               description={n.description}
@@ -162,7 +152,7 @@ export default function ClassViewer({ data }) {
                                                               </h1>
                                                           ) : null}
                                                           {n.returns?.length ? (
-                                                              <h1 className="text-xl text-gray-200">
+                                                              <h1 className="text-xl text-gray-200 mt-2">
                                                                   Returns: <TypeLink type={n.returns} />
                                                               </h1>
                                                           ) : null}
