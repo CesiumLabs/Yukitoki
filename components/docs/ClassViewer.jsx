@@ -1,5 +1,5 @@
 import Title from "./Title";
-import { faCode } from "@fortawesome/free-solid-svg-icons";
+import { faCode, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ParamsTable from "./ParamsTable";
 import TypeLink from "./TypeLink";
@@ -47,10 +47,14 @@ export default function ClassViewer({ data }) {
                 {hasProps ? (
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 py-10">
                         {Props.filter((x) => !!x.data).map((m) => {
+                            const propid = `props-${m.name}`;
                             return (
                                 <div>
-                                    <span className="title font-semibold text-gray-200">{m.name}</span>
-                                    <div className="flex flex-col">
+                                    <div className="flex flex-row justify-between items-center text-gray-200 cursor-pointer lg:cursor-default" onClick={() => document.getElementById(propid).classList.toggle("hidden")}>
+                                        <p className="font-semibold">{m.name}</p>
+                                        <FontAwesomeIcon className="h-5 w-5 lg:hidden" icon={faAngleDown} />
+                                    </div>
+                                    <div className="hidden lg:flex lg:flex-col" id={propid}>
                                         {m.data
                                             .sort(
                                                 (a, b) =>

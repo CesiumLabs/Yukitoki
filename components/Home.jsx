@@ -44,7 +44,7 @@ export default class Home extends Component {
                                 <FontAwesomeIcon
                                     title="Click to copy"
                                     icon={faClipboard}
-                                    className="ml-4 w-10 h-10 text-white hover:text-gray-300 cursor-pointer"
+                                    className="ml-2 w-10 h-10 text-white hover:text-gray-300 cursor-pointer"
                                     onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})}
                                 />
                             </div>

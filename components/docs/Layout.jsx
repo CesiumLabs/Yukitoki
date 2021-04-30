@@ -130,7 +130,7 @@ export default function DocsLayout({ docs }) {
                                     <ul className="lg:mr-8">
                                         {content.map((child, j) => {
                                             return (
-                                                <li className="lg:-ml-4" key={i + j}>
+                                                <li key={i + j}>
                                                     <Link
                                                         href={child.path}
                                                     >
