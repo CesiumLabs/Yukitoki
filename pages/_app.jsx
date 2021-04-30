@@ -30,6 +30,10 @@ export default function Application({ Component, pageProps }) {
 
                 <meta name="theme-color" content="#4285F4" />
                 <link rel="shortcut icon" href="/favicon.png" />
+
+                <script async src="https://arc.io/widget.min.js#6TjnmPuK"></script>
+
+                
                 <title>{META.TITLE}</title>
             </Head>
 
