@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import ErrorPage from "./Error";
 import { UTILS } from "../../config";
 import Link from "next/link";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const params = ["classes", "typedefs"];
 const mdconv = new Converter({
@@ -113,14 +115,16 @@ export default function DocsLayout({ docs }) {
 
     return (
         <div className="mx-10 my-5">
-            <button className="text-white bg-gray-700 rounded-full px-2 py-1 z-40 fixed bottom-9 left-10 lg:hidden" onClick={toggleSidebar}>
-                ❤
+            <button className="shadow text-white bg-blue-500 rounded-full px-3 py-3 z-40 fixed bottom-9 right-9 lg:hidden" onClick={toggleSidebar}>
+                <FontAwesomeIcon className="h-5 w-5" icon={faBars} />
             </button>
         
             <div className="flex flex-col lg:flex-row">
                 <div class="hidden fixed overflow-y-auto rounded lg:rounded-none shadow lg:shadow-none px-5 py-4 lg:px-0 lg:py-0 left-8 lg:left-auto right-8 lg:right-auto top-8 lg:top-auto bottom-8 lg:bottom-auto lg:static lg:block z-50 lg:z-auto bg-gray-800 lg:bg-gray-900" id="sidebar">
-                    <button className="text-white bg-gray-600 w-full rounded lg:hidden px-3 py-2 mb-5" onClick={toggleSidebar}>
-                        Close ❌
+                    <button className="text-white bg-gray-600 w-full rounded lg:hidden px-3 py-2 mb-5 cursor-pointer" onClick={toggleSidebar}>
+                        <div className="flex justify-center items-center">
+                            Close <FontAwesomeIcon className="h-6 w-6 ml-2" icon={faTimes} />
+                        </div>
                     </button>
                     {
                         Object.entries(sideBarData).map(([name, content], i) => {
