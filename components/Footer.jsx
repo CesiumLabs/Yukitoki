@@ -10,7 +10,7 @@ export default function Footer() {
                 </h1>
                 <p className="text-center text-gray-300">{FOOTER_DESCRIPTION}</p>
                 <p className="text-center text-gray-300 mt-10">
-                    © <a href="https://github.com/DevSnowflake">Snowflake Studio ❄</a> - {new Date().getFullYear()}
+                    © <a href="https://github.com/DevSnowflake">Snowflake Studio</a> - {new Date().getFullYear()}
                 </p>
             </div>
         </div>

@@ -31,8 +31,8 @@ export default function Application({ Component, pageProps }) {
                 <meta name="theme-color" content="#4285F4" />
                 <link rel="shortcut icon" href="/favicon.png" />
 
+                <script src="https://twemoji.maxcdn.com/v/latest/twemoji.min.js" crossOrigin="anonymous"></script>
                 <script async src="https://arc.io/widget.min.js#Sd4cVV7a"></script>
-
                 <title>{META.TITLE}</title>
             </Head>
 

@@ -2,8 +2,16 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import SideBar from "./docs/Sidebar";
 import { LOCAL_TYPES } from "../config";
+import { useEffect } from "react";
 
 export default function Docs({ docs }) {
+    useEffect(() => {
+        window.twemoji?.parse(document.body);
+        document.querySelectorAll("img.emoji").forEach((fn) => {
+            fn.parentElement.classList.add("flex");
+        });
+    });
+
     function applyTypes() {
         try {
             docs["classes"].forEach((c) => {
