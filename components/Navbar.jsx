@@ -10,15 +10,8 @@ export default function Navbar() {
                         <a className="text-3xl font-bold leading-none text-gray-200">{SITE_NAME}</a>
                     </Link>
                     <div className="lg:hidden">
-                        <button
-                            className="navbar-burger flex items-center text-gray-600 p-3"
-                            onClick={() => document.getElementById("mobile_menu").classList.remove("hidden")}
-                        >
-                            <svg
-                                className="block h-4 w-4 fill-current"
-                                viewBox="0 0 20 20"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
+                        <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={() => document.getElementById("mobile_menu").classList.remove("hidden")}>
+                            <svg className="block h-4 w-4 fill-current" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
                             </svg>
                         </button>
@@ -28,11 +21,7 @@ export default function Navbar() {
                             if (m.external)
                                 return (
                                     <li key={i}>
-                                        <a
-                                            className="text-sm text-gray-400 hover:text-gray-500"
-                                            href={m.path}
-                                            target="_blank"
-                                        >
+                                        <a className="text-sm text-gray-400 hover:text-gray-500" href={m.path} target="_blank">
                                             {m.name}
                                         </a>
                                     </li>
@@ -56,23 +45,9 @@ export default function Navbar() {
                         <Link href="/">
                             <a className="mr-auto text-3xl font-bold leading-none text-gray-200">{SITE_NAME}</a>
                         </Link>
-                        <button
-                            className="navbar-close"
-                            onClick={() => document.getElementById("mobile_menu").classList.add("hidden")}
-                        >
-                            <svg
-                                className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    strokeWidth="2"
-                                    d="M6 18L18 6M6 6l12 12"
-                                ></path>
+                        <button className="navbar-close" onClick={() => document.getElementById("mobile_menu").classList.add("hidden")}>
+                            <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
                             </svg>
                         </button>
                     </div>
@@ -82,11 +57,7 @@ export default function Navbar() {
                                 if (m.external)
                                     return (
                                         <li className="mb-1" key={i}>
-                                            <a
-                                                className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded"
-                                                href={m.path}
-                                                target="_blank"
-                                            >
+                                            <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded" href={m.path} target="_blank">
                                                 {m.name}
                                             </a>
                                         </li>
@@ -95,12 +66,7 @@ export default function Navbar() {
                                 return (
                                     <li className="mb-1" key={i}>
                                         <Link href={m.path}>
-                                            <a
-                                                onClick={() =>
-                                                    document.getElementById("mobile_menu").classList.add("hidden")
-                                                }
-                                                className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded"
-                                            >
+                                            <a onClick={() => document.getElementById("mobile_menu").classList.add("hidden")} className="block p-4 text-sm font-semibold text-gray-400 hover:bg-gray-600 rounded">
                                                 {m.name}
                                             </a>
                                         </Link>

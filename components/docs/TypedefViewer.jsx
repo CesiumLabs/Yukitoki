@@ -12,24 +12,16 @@ export default function TypedefViewer({ data }) {
         <section>
             <div>
                 <h1 className="text-white text-3xl font-bold">{data.data.name}</h1>
-                <a
-                    class="float-right"
-                    href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}
-                >
+                <a class="float-right" href={constructLink(data.data.meta.path, data.data.meta.file, data.data.meta.line)}>
                     <FontAwesomeIcon icon={faCode} class="h-7 w-7 text-blue-500 hover:text-blue-600 cursor-pointer" />
                 </a>
-                {data.data.description ? (
-                    <ParamsParser className="text-white mt-0" paramData={data.data.description} />
-                ) : null}
+                {data.data.description ? <ParamsParser className="text-white mt-0" paramData={data.data.description} /> : null}
             </div>
             <div>
                 {data.data.type ? (
                     <div>
                         <h1 className="text-gray-200 text-2xl font-semibold pt-10 pb-2">Types</h1>
-                        <a
-                            className="text-blue-400 font-semibold text-lg cursor-pointer hover:text-blue-300"
-                            href={PARAMS[data.data.type]}
-                        >
+                        <a className="text-blue-400 font-semibold text-lg cursor-pointer hover:text-blue-300" href={PARAMS[data.data.type]}>
                             {data.data.type}
                         </a>
                     </div>

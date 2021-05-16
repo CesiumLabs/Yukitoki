@@ -33,7 +33,6 @@ export default function Application({ Component, pageProps }) {
 
                 <script async src="https://arc.io/widget.min.js#Sd4cVV7a"></script>
 
-                
                 <title>{META.TITLE}</title>
             </Head>
 

@@ -42,11 +42,7 @@ export default function Sidebar({ docs }) {
                 file.head = name;
                 navigate(file.name, null, file);
             } else {
-                if (
-                    !custom.find((x) => x.files[fileName] !== undefined) ||
-                    !custom.find((x) => x.files[fileName] !== undefined).files[fileName]
-                )
-                    return <ErrorPage path={`/docs?path=${path}`} />;
+                if (!custom.find((x) => x.files[fileName] !== undefined) || !custom.find((x) => x.files[fileName] !== undefined).files[fileName]) return <ErrorPage path={`/docs?path=${path}`} />;
 
                 navigate(fileName, null);
             }
@@ -89,17 +85,8 @@ export default function Sidebar({ docs }) {
         <div className="relative container mx-auto bg-gray-900">
             <div className="space-x-4 py-5 inline-flex bg-gray-900">
                 <div className="lg:hidden">
-                    <button
-                        className="navbar-burger flex items-center text-gray-600 p-3"
-                        onClick={() => document.getElementById("doc_mobile").classList.toggle("hidden")}
-                    >
-                        <svg
-                            className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="currentColor"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                        >
+                    <button className="navbar-burger flex items-center text-gray-600 p-3" onClick={() => document.getElementById("doc_mobile").classList.toggle("hidden")}>
+                        <svg className="h-6 w-6 text-gray-400 cursor-pointer hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24">
                             <path d="M24 22h-24l12-20z" />
                         </svg>
                     </button>
@@ -118,45 +105,20 @@ export default function Sidebar({ docs }) {
                                                 <>
                                                     <li className="px-5" key={i}>
                                                         <div className="flex flex-row items-center h-8">
-                                                            <div className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                                                                {m.name}
-                                                            </div>
+                                                            <div className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">{m.name}</div>
                                                         </div>
                                                     </li>
                                                     {params.map((n, j) => {
                                                         return (
                                                             <li key={i + j}>
-                                                                <Link
-                                                                    href={`/docs?path=${n.path
-                                                                        .split("/")
-                                                                        .slice(1)
-                                                                        .join("/")
-                                                                        .split(".")
-                                                                        .shift()}`}
-                                                                >
-                                                                    <a
-                                                                        href="#"
-                                                                        className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
-                                                                    >
+                                                                <Link href={`/docs?path=${n.path.split("/").slice(1).join("/").split(".").shift()}`}>
+                                                                    <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6">
                                                                         <span className="inline-flex justify-center items-center ml-4">
-                                                                            <svg
-                                                                                className="w-5 h-5"
-                                                                                fill="none"
-                                                                                stroke="currentColor"
-                                                                                viewBox="0 0 24 24"
-                                                                                xmlns="http://www.w3.org/2000/svg"
-                                                                            >
-                                                                                <path
-                                                                                    strokeLinecap="round"
-                                                                                    strokeLinejoin="round"
-                                                                                    strokeWidth="2"
-                                                                                    d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                                                                                ></path>
+                                                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
                                                                             </svg>
                                                                         </span>
-                                                                        <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                                                                            {n.name}
-                                                                        </span>
+                                                                        <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">{n.name}</span>
                                                                     </a>
                                                                 </Link>
                                                             </li>
@@ -176,46 +138,22 @@ export default function Sidebar({ docs }) {
                                                 <>
                                                     <li className="px-5" key={i}>
                                                         <div className="flex flex-row items-center h-8">
-                                                            <div className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">
-                                                                {m.name}
-                                                            </div>
+                                                            <div className="flex font-semibold text-sm text-gray-300 my-4 font-sans uppercase">{m.name}</div>
                                                         </div>
                                                     </li>
                                                     {params
-                                                        .sort(
-                                                            (a, b) =>
-                                                                m.data[a].name.toLowerCase().charCodeAt(0) -
-                                                                m.data[b].name.toLowerCase().charCodeAt(0)
-                                                        )
+                                                        .sort((a, b) => m.data[a].name.toLowerCase().charCodeAt(0) - m.data[b].name.toLowerCase().charCodeAt(0))
                                                         .map((n, j) => {
                                                             return (
                                                                 <li key={i + j}>
-                                                                    <Link
-                                                                        href={`/docs?path=${m.name}/${m.data[n].name}`}
-                                                                    >
-                                                                        <a
-                                                                            href="#"
-                                                                            className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6"
-                                                                        >
+                                                                    <Link href={`/docs?path=${m.name}/${m.data[n].name}`}>
+                                                                        <a href="#" className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-700 text-gray-500 hover:text-gray-200 border-l-4 border-transparent hover:border-blue-500 pr-6">
                                                                             <span className="inline-flex justify-center items-center ml-4">
-                                                                                <svg
-                                                                                    className="w-5 h-5"
-                                                                                    fill="none"
-                                                                                    stroke="currentColor"
-                                                                                    viewBox="0 0 24 24"
-                                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                                >
-                                                                                    <path
-                                                                                        strokeLinecap="round"
-                                                                                        strokeLinejoin="round"
-                                                                                        strokeWidth="2"
-                                                                                        d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"
-                                                                                    ></path>
+                                                                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
                                                                                 </svg>
                                                                             </span>
-                                                                            <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">
-                                                                                {m.data[n].name}
-                                                                            </span>
+                                                                            <span className="ml-2 font-semibold text-sm tracking-wide truncate font-sans">{m.data[n].name}</span>
                                                                         </a>
                                                                     </Link>
                                                                 </li>

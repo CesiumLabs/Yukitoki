@@ -15,9 +15,7 @@ export default class Home extends Component {
     }
 
     async componentDidMount() {
-        const data = await fetch(
-            `${window.location.origin}/api/stats?name=${STATS.MODULE_NAME}&repo=${STATS.GITHUB_REPO}`
-        )
+        const data = await fetch(`${window.location.origin}/api/stats?name=${STATS.MODULE_NAME}&repo=${STATS.GITHUB_REPO}`)
             .then((res) => res.json())
             .then((data) => ({ downloads: data.downloads, stars: data.stars, contributors: data.contributors }))
             .catch(() => ({ downloads: 188027, stars: 175, contributors: 18 }));
@@ -32,34 +30,21 @@ export default class Home extends Component {
                     <div className="container mx-auto">
                         <div className="py-3">
                             <div>
-                                <h1 className="text-center lg:text-9xl text-6xl font-bold leading-none text-white pt-20 logoholder">
-                                    {SITE_NAME}
-                                </h1>
+                                <h1 className="text-center lg:text-9xl text-6xl font-bold leading-none text-white pt-20 logoholder">{SITE_NAME}</h1>
                             </div>
 
                             <div className="flex justify-center align-center mt-20 mb-20">
                                 <code className="shadow-xl text-white bg-gray-600 font-bold leading-none p-3 rounded-md">
                                     <h1 className="text-lg">{INSTALL_COMMAND}</h1>
                                 </code>
-                                <FontAwesomeIcon
-                                    title="Click to copy"
-                                    icon={faClipboard}
-                                    className="w-10 h-10 text-white hover:text-gray-300 my-1 cursor-pointer"
-                                    onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})}
-                                />
+                                <FontAwesomeIcon title="Click to copy" icon={faClipboard} className="w-10 h-10 text-white hover:text-gray-300 my-1 cursor-pointer" onClick={() => navigator.clipboard.writeText(INSTALL_COMMAND).catch((e) => {})} />
                             </div>
 
                             <div className="buttons flex space-x-2 justify-center align-center mb-10">
-                                <a
-                                    className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400"
-                                    href={GITHUB_LINK}
-                                >
+                                <a className="py-2 px-6 bg-gray-50 hover:bg-gray-200 text-sm text-gray-900 font-bold rounded-l-xl rounded-t-xl transition duration-400" href={GITHUB_LINK}>
                                     GitHub
                                 </a>
-                                <a
-                                    className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-400"
-                                    href={DISCORD_INVITE}
-                                >
+                                <a className="py-2 px-6 bg-blue-700 hover:bg-blue-900 text-sm text-white font-bold rounded-l-xl rounded-t-xl transition duration-400" href={DISCORD_INVITE}>
                                     Discord
                                 </a>
                             </div>

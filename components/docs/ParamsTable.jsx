@@ -4,9 +4,7 @@ import ParamsParser from "./ParamsParser";
 export default function ParamsTable({ paramsData, withBorder, description }) {
     return (
         <div className={`patamsTable ${Boolean(withBorder) ? " border-l-2 hover:border-blue-500 transition" : ""}`}>
-            {description ? (
-                <h1 className="text-gray-200 text-lg px-2 py-2" dangerouslySetInnerHTML={{ __html: description }}></h1>
-            ) : null}
+            {description ? <h1 className="text-gray-200 text-lg px-2 py-2" dangerouslySetInnerHTML={{ __html: description }}></h1> : null}
             {paramsData?.length ? (
                 <table className={`table-auto${Boolean(withBorder) ? " mx-2" : ""}`}>
                     <thead className="justify-between">
@@ -33,9 +31,7 @@ export default function ParamsTable({ paramsData, withBorder, description }) {
                     </thead>
                     <tbody className="bg-gray-600 text-white text-center">
                         {paramsData.map((m, i) => {
-                            m.type = Array.isArray(m.type)
-                                ? m.type.flat(Infinity).map((n, j) => <TypeLink key={j} type={n} />)
-                                : m.type;
+                            m.type = Array.isArray(m.type) ? m.type.flat(Infinity).map((n, j) => <TypeLink key={j} type={n} />) : m.type;
 
                             return (
                                 <tr className="bg-gray-700" key={i}>

@@ -10,11 +10,7 @@ export default function Special({ prop }) {
         <>
             {possible.map((m, i) => {
                 return m === prop.scope || prop[m] ? (
-                    <span
-                        key={i}
-                        className="bg-blue-500 text-white font-semibold text-sm uppercase px-1 py-1 rounded-lg mx-3 cursor-help"
-                        title={`This prop is ${types[m]}.`}
-                    >
+                    <span key={i} className="bg-blue-500 text-white font-semibold text-sm uppercase px-1 py-1 rounded-lg mx-3 cursor-help" title={`This prop is ${types[m]}.`}>
                         {types[m]}
                     </span>
                 ) : null;
