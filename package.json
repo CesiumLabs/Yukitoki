@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "export": "next export",
     "format": "prettier --write \"pages/**/*.{ts,tsx,js,jsx}\" \"components/**/*.{ts,tsx,js,jsx}\""
   },
   "author": "Snowflake107",
@@ -35,6 +36,7 @@
     "showdown": "^1.9.1"
   },
   "devDependencies": {
+    "@netlify/plugin-nextjs": "^3.3.0",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.10",
     "prettier": "^2.2.1",
