@@ -22,7 +22,7 @@ module.exports = {
         IMAGE: "https://snowdocs.vercel.app/favicon.png"
     },
     DOCUMENTATION_SOURCE: "https://raw.githubusercontent.com/Androz2091/discord-player/docs/v5.json",
-    BRANCH: "master",
+    BRANCH: "v5",
     PARAMS: {
         string: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
         String: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String',
