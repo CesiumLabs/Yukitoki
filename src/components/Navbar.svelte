@@ -27,7 +27,7 @@
                         {#if config.NAV.ICON.TYPE === "IMAGE"}
                             <img src={config.NAV.ICON.VALUE} alt="img" />
                         {:else}
-                            <h1 class="text-gray-200 text-lg font-semibold select-none">{config.NAV.ICON.VALUE}</h1>
+                            <h1 class="text-white text-lg font-semibold select-none">{config.NAV.ICON.VALUE}</h1>
                         {/if}
                     </a>
                 </div>
