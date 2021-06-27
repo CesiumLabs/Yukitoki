@@ -1,0 +1,94 @@
+<script>
+    import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
+    import { FontAwesomeIcon } from "fontawesome-svelte";
+
+    const config = window.yukitoki.config;
+    let currentTheme = window.yukitoki.theme;
+
+    function toggleMobileMenu(ev) {
+        ev.preventDefault();
+        const elm = document.getElementById("mobile-menu");
+        if (!elm) return;
+        elm.classList.toggle("hidden");
+    }
+
+    function toggleTheme() {
+        window.yukitoki.toggleTheme();
+        currentTheme = window.yukitoki.theme;
+    }
+</script>
+
+    <nav class="bg-blurple-600">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href={config.NAV.ICON.HREF ?? "/"} class="block h-8 w-auto">
+                        {#if config.NAV.ICON.TYPE === "IMAGE"}
+                            <img src={config.NAV.ICON.VALUE} alt="img" />
+                        {:else}
+                            <h1 class="text-gray-200 text-lg font-semibold select-none">{config.NAV.ICON.VALUE}</h1>
+                        {/if}
+                    </a>
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                    <div class="flex space-x-4 ml-auto mr-auto">
+                        {#each config.NAV.BUTTONS as nav}
+                            {#if nav.newPage}
+                            <a
+                                href={nav.path}
+                                target="_blank"
+                                class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">{nav.label}
+                            </a>
+                            {:else}
+                            <a href={nav.path} class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium"
+                                aria-current="page">{nav.label}
+                            </a>
+                            {/if}
+                        {/each}
+                    </div>
+                </div>
+            </div>
+
+            <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
+                <button on:click={toggleTheme} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">#</span>
+                    <FontAwesomeIcon icon={currentTheme === "dark" ? faSun : faMoon} />
+                </button>
+            </div>
+
+            <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+                <button on:click={toggleMobileMenu} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">#</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="sm:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            {#each config.NAV.BUTTONS as nav}
+                {#if nav.newPage}
+                <a href={nav.path} target="_blank" class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                    {nav.label}
+                </a>
+                {:else}
+                <a href={nav.path} class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                    {nav.label}
+                </a>
+                {/if}
+            {/each}
+            <button on:click={toggleTheme} type="button" class="p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">#</span>
+                <FontAwesomeIcon icon={currentTheme === "dark" ? faSun : faMoon} />
+            </button>
+        </div>
+    </div>
+</nav>
