@@ -64,6 +64,8 @@
             <li>Fast</li>
             <li>Easy to install</li>
             <li>Responsive</li>
+            <li>Dark & Light mode</li>
+            <li>Custom 404 page</li>
         </ul>
     </div>
 </div>

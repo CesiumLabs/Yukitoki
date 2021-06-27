@@ -18,7 +18,7 @@
     }
 </script>
 
-    <nav class="bg-blurple-600">
+<nav class="bg-blurple-600">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -35,16 +35,9 @@
                     <div class="flex space-x-4 ml-auto mr-auto">
                         {#each config.NAV.BUTTONS as nav}
                             {#if nav.newPage}
-                            <a
-                                href={nav.path}
-                                target="_blank"
-                                class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium"
-                                aria-current="page">{nav.label}
-                            </a>
+                                <a href={nav.path} target="_blank" class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">{nav.label} </a>
                             {:else}
-                            <a href={nav.path} class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium"
-                                aria-current="page">{nav.label}
-                            </a>
+                                <a href={nav.path} class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">{nav.label} </a>
                             {/if}
                         {/each}
                     </div>
@@ -76,13 +69,13 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
             {#each config.NAV.BUTTONS as nav}
                 {#if nav.newPage}
-                <a href={nav.path} target="_blank" class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
-                    {nav.label}
-                </a>
+                    <a href={nav.path} target="_blank" class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                        {nav.label}
+                    </a>
                 {:else}
-                <a href={nav.path} class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
-                    {nav.label}
-                </a>
+                    <a href={nav.path} class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                        {nav.label}
+                    </a>
                 {/if}
             {/each}
             <button on:click={toggleTheme} type="button" class="p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">

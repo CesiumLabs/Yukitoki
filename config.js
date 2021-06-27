@@ -26,12 +26,12 @@ const config = {
             },
             {
                 label: "GitHub",
-                path: "https://github.com/DevSnowflake/docs",
+                path: "https://github.com/DevSnowflake/Yukitoki",
                 newPage: true
             }
         ]
     },
-    INSTALL_COMMAND: "install DevSnowflake/Yukitoki",
+    INSTALL_COMMAND: "git clone DevSnowflake/Yukitoki",
     HOME_LOGO: {
         TYPE: "TEXT", // "IMAGE" | "TEXT"
         VALUE: "Yukitoki"

@@ -48,8 +48,12 @@ function updateMeta() {
 
 updateMeta();
 
-const app = HMR(App, {
-    target: document.body
-}, 'routify-app');
+const app = HMR(
+    App,
+    {
+        target: document.body
+    },
+    "routify-app"
+);
 
 export default app;

@@ -2,6 +2,7 @@
     import { Router } from "@roxi/routify";
     import { routes } from "../.routify/routes";
 </script>
+
 <Router {routes} />
 
 <style global lang="postcss">
@@ -17,16 +18,16 @@
 
     /* Track */
     ::-webkit-scrollbar-track {
-        background: #FFFFFF;
+        background: #ffffff;
     }
 
     /* Handle */
     ::-webkit-scrollbar-thumb {
-        background: #304EB6;
+        background: #304eb6;
     }
 
     /* Handle on hover */
     ::-webkit-scrollbar-thumb:hover {
-        background: #304EB6;
+        background: #304eb6;
     }
 </style>
