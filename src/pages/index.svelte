@@ -34,7 +34,7 @@
 
 <Navbar />
 
-<div class="text-white bg-blurple-600 text-center py-20">
+<div class="text-white bg-blurple-600 text-center py-20" id="containerElm">
     {#if config.HOME_LOGO?.TYPE === "IMAGE"}
         <img src={config.HOME_LOGO.VALUE} alt="img" class="mx-auto select-none" />
     {:else}
