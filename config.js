@@ -31,7 +31,7 @@ const config = {
             }
         ]
     },
-    INSTALL_COMMAND: "git clone DevSnowflake/Yukitoki",
+    INSTALL_COMMAND: "install Yukitoki",
     HOME_LOGO: {
         TYPE: "TEXT", // "IMAGE" | "TEXT"
         VALUE: "Yukitoki"
