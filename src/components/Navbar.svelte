@@ -35,7 +35,7 @@
                     <div class="flex space-x-4 ml-auto mr-auto">
                         {#each config.NAV.BUTTONS as nav}
                             {#if nav.newPage}
-                                <a href={nav.path} target="_blank" class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">{nav.label} </a>
+                                <a href={nav.path} rel="noreferrer" target="_blank" class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">{nav.label} </a>
                             {:else}
                                 <a href={nav.path} class="text-white hover:opacity-70 px-3 py-2 rounded-md text-sm font-medium" aria-current="page">{nav.label} </a>
                             {/if}
@@ -69,7 +69,7 @@
         <div class="px-2 pt-2 pb-3 space-y-1">
             {#each config.NAV.BUTTONS as nav}
                 {#if nav.newPage}
-                    <a href={nav.path} target="_blank" class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
+                    <a href={nav.path} rel="noreferrer" target="_blank" class="text-white block hover:opacity-70 px-3 py-2 rounded-md text-base font-medium" aria-current="page">
                         {nav.label}
                     </a>
                 {:else}
