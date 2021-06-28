@@ -1,6 +1,6 @@
 <script>
-    import Navbar from "../components/Navbar.svelte";
-    import Footer from "../components/Footer.svelte";
+    import Navbar from "~/components/Navbar.svelte";
+    import Footer from "~/components/Footer.svelte";
 
     const msgs = ["You are lost...", "Oh no, you found me!", "How did we get here?", "Unknown Page", "Opps! You got lost..", "T-T", "Hey there", "Where are we?", "Sad"];
 

@@ -1,9 +1,9 @@
 <script>
     import { faClipboardList } from "@fortawesome/free-solid-svg-icons";
     import { FontAwesomeIcon } from "fontawesome-svelte";
-    import Tooltip from "../components/Tooltip.svelte";
-    import Navbar from "../components/Navbar.svelte";
-    import Footer from "../components/Footer.svelte";
+    import Tooltip from "~/components/Tooltip.svelte";
+    import Navbar from "~/components/Navbar.svelte";
+    import Footer from "~/components/Footer.svelte";
 
     const config = window.yukitoki.config;
 
