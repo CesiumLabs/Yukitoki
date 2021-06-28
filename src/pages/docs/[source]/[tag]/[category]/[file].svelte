@@ -12,11 +12,11 @@
     const docsSource = new DocsStore(Sources[source]);
     let docs = null;
 
-    docsSource.fetchDocs().then((doc) => {
-        docs = doc.find((x) => x.tag === tag);
+    // docsSource.fetchDocs().then((doc) => {
+    //     docs = doc.find((x) => x.tag === tag);
 
-        console.log(docs);
-    });
+    //     console.log(docs);
+    // });
 </script>
 
 <Navbar />
