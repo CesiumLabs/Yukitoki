@@ -18,7 +18,7 @@
     <ScrollUp />
 {/if}
 
-<style lang="postcss">
+<style global lang="postcss">
     @tailwind base;
     @tailwind components;
     @tailwind utilities;
