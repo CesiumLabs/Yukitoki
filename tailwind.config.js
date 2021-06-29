@@ -22,7 +22,7 @@ module.exports = {
                     900: "#1B2B65"
                 }
             }
-        }
+        },
     },
     variants: {
         extend: {}

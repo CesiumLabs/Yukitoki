@@ -1,19 +1,21 @@
 <script>
+    import { params, url } from "@roxi/routify";
+    import { FontAwesomeIcon } from "fontawesome-svelte";
+    import { faChevronCircleRight, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+
     export let data;
 
     let currentBranch = data[0].tag,
         currentID = data[0].id;
 
-    const currentDoc = data.find((x) => x.tag === currentBranch && x.id === currentID);
-
-    console.log("DATA", data);
+    const { source, tag, category, file } = $params;
+    let currentDoc = data.find((x) => x.tag === tag && x.id === source);
 
     function updateData() {
         const src = document.getElementById("docsource");
         const branch = document.getElementById("docbranch");
 
-        currentBranch = branch?.value;
-        currentID = src?.value;
+        window.location.href = `/docs/${src?.value ?? source}/${branch?.value ?? tag}${category ? `/${category}` : ""}${file ? `/${file}` : ""}`;
     }
 
     const sidebarProps = ["custom", "classes", "typedefs"]
@@ -22,17 +24,42 @@
             return { type: m, data: d };
         })
         .filter((x) => !!x);
+
+    function toggleSidebar() {
+        const elm = document.getElementById("sidebar-panel");
+        if (elm) {
+            elm.classList.toggle("-translate-x-full");
+        }
+    }
 </script>
 
-<div class="inline-block fixed lg:block lg:relative z-10 transition sidebar transform-gpu -translate-x-full lg:translate-x-0">
-    <div class="sticky top-0 overflow-y-auto overflow-x-hidden w-72 md:w-80 lg:custom-scroll sidebar-height">
+<div class="absolute left-0 flex items-center md:hidden">
+    <button on:click={toggleSidebar} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
+        <span class="sr-only">#</span>
+        <button class="bg-blurple-600 text-2xl p-2">
+            <FontAwesomeIcon icon={faChevronCircleRight} />
+        </button>
+    </button>
+</div>
+
+<div class="inline-block fixed lg:block lg:relative bg-white dark:bg-gray-800 transition sidebar transform-gpu -translate-x-full lg:translate-x-0 border-r-2 mb-5" id="sidebar-panel">
+    <div class="sticky top-0 overflow-y-auto overflow-x-hidden w-72 md:w-80 sidebar-height">
+        <div class="absolute right-0 flex items-center md:hidden">
+            <button on:click={toggleSidebar} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
+                <span class="sr-only">#</span>
+                <button class="bg-blurple-600 text-2xl p-2">
+                    <FontAwesomeIcon icon={faTimesCircle} />
+                </button>
+            </button>
+        </div>
+
         <nav class="my-5 px-2 space-y-1 z-10 py-3 select-none">
             <ul>
                 <li class="flex flex-col">
                     <label for="docsource" class="font-semibold text-lg">Source</label>
                     <select on:input={updateData} id="docsource" class="form-select rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0 text-black">
                         {#each [...new Set(data.map((m) => m.id))] as doc}
-                            <option value={doc} selected={currentID === doc ? "true" : "false"}>{doc}</option>
+                            <option value={doc} selected={doc === source ? "true" : "false"}>{doc}</option>
                         {/each}
                     </select>
                 </li>
@@ -40,7 +67,7 @@
                     <label for="docbranch" class="font-semibold text-lg">Branch</label>
                     <select on:input={updateData} id="docbranch" class="form-select rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0 text-black">
                         {#each data.filter((x) => x.id === currentID) as doc}
-                            <option value={doc.tag} selected={currentBranch === doc.tag ? true : false}>{doc.tag}</option>
+                            <option value={doc.tag} selected={tag === doc.tag ? true : false}>{doc.tag}</option>
                         {/each}
                     </select>
                 </li>
@@ -48,13 +75,24 @@
             {#each sidebarProps as prop}
                 {#if prop.type === "custom"}
                     {#each Object.keys(prop.data) as item}
-                        <label for="files" class="font-semibold text-lg">{prop.data[item].name}</label>
+                        <label for="files" class="font-semibold text-lg uppercase">{prop.data[item].name}</label>
                         <ul id="files">
-                            {#each Object.values(prop.data[item].files) as file}
-                                <li class="sidebar-item-selector">{file.name}</li>
+                            {#each Object.entries(prop.data[item].files) as [filename, file]}
+                                <li class="sidebar-item-selector">
+                                    <a target="_self" href={$url(`/docs/${source}/${tag}/${item}/${filename}`)}>{file.name}</a>
+                                </li>
                             {/each}
                         </ul>
                     {/each}
+                {:else}
+                    <label for={prop.type} class="font-semibold text-lg uppercase">{prop.type}</label>
+                    <ul id={prop.type}>
+                        {#each Object.values(prop.data) as item}
+                            <li class="sidebar-item-selector">
+                                <a target="_self" href={$url(`/docs/${source}/${tag}/${prop.type}/${item.name}`)}>{item.name}</a>
+                            </li>
+                        {/each}
+                    </ul>
                 {/if}
             {/each}
         </nav>

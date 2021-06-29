@@ -10,6 +10,14 @@
         const elm = document.getElementById("mobile-menu");
         if (!elm) return;
         elm.classList.toggle("hidden");
+        const opener = document.getElementById("nav-opener");
+        const closer = document.getElementById("nav-closer");
+
+        if (opener && closer) {
+            const success = closer.classList.toggle("hidden");
+            if (!success) opener.classList.replace("block", "hidden");
+            else opener.classList.replace("hidden", "block");
+        }
     }
 
     function toggleTheme() {
@@ -54,10 +62,10 @@
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
                 <button on:click={toggleMobileMenu} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">#</span>
-                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg id="nav-opener" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
-                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <svg svg id="nav-closer" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                     </svg>
                 </button>
