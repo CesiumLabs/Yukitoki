@@ -21,7 +21,7 @@
     const sidebarProps = ["custom", "classes", "typedefs"]
         .map((m) => {
             const d = currentDoc[m];
-            return { type: m, data: d };
+            return { type: m === "classes" ? "class" : m === "typedefs" ? "typedef" : m, data: d };
         })
         .filter((x) => !!x);
 

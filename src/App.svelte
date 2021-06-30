@@ -30,6 +30,10 @@
     @tailwind components;
     @tailwind utilities;
 
+    body {
+        scroll-behavior: smooth;
+    }
+
     ::-webkit-scrollbar {
         width: 7px;
         height: 7px;
@@ -180,7 +184,7 @@
 
     blockquote {
         border-left: 5px solid #7289da;
-        background-color: #dfdfdf;
+        background-color: #e7e5e5;
         padding: 15px;
         border-radius: 3px;
         color: #000000;

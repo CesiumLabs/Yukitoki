@@ -1,0 +1,73 @@
+<script>
+    import markdown from "~/app/Markdown";
+    import { FontAwesomeIcon } from "fontawesome-svelte";
+    import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+
+    export let data;
+</script>
+
+<div class="border-l-2 hover:border-blurple-500 transition overflow-y-auto">
+    <table class="table-auto mx-2 my-3">
+        <thead class="justify-between">
+            <tr class="dark:bg-blurple-500 bg-blurple-500 text-white">
+                <th class="px-16 py-2">
+                    <span>PARAMETER</span>
+                </th>
+                <th class="px-16 py-2">
+                    <span>TYPE</span>
+                </th>
+                {#if data.some((x) => !!x.optional)}
+                    <th class="px-16 py-2">
+                        <span>OPTIONAL</span>
+                    </th>
+                {/if}
+                {#if data.some((x) => !!x.default)}
+                    <th class="px-16 py-2">
+                        <span>DEFAULT</span>
+                    </th>
+                {/if}
+                <th class="px-16 py-2">
+                    <span>DESCRIPTION</span>
+                </th>
+            </tr>
+        </thead>
+        <tbody class="text-black dark:text-white dark:bg-gray-700 bg-gray-300 text-center font-medium">
+            {#each data.map((m) => {
+                m.dataType = m.type.flat(Infinity).map((m) => ` ${m} `);
+                return m;
+            }) as m}
+                <tr>
+                    <td>
+                        <span>{m.name}</span>
+                    </td>
+                    <td class="px-16 py-2 font-semibold">
+                        {#each m.dataType as t}
+                            {#if t === "or"}
+                                <span class="px-1">{t}</span>
+                            {:else}
+                                <span class="cursor-pointer text-blurple-700 dark:text-blurple-500">{t}</span>
+                            {/if}
+                        {/each}
+                    </td>
+                    {#if data.some((x) => !!x.optional)}
+                        <td>
+                            {#if m.optional}
+                                <span><FontAwesomeIcon icon={faCheck} /></span>
+                            {:else}
+                                <span><FontAwesomeIcon icon={faTimes} /></span>
+                            {/if}
+                        </td>
+                    {/if}
+                    {#if data.some((x) => !!x.default)}
+                        <td>
+                            <span>{m.default || ""}</span>
+                        </td>
+                    {/if}
+                    <td class="px-16 py-2">
+                        {@html markdown(m.description)}
+                    </td>
+                </tr>
+            {/each}
+        </tbody>
+    </table>
+</div>

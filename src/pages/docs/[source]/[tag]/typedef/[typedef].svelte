@@ -1,0 +1,62 @@
+<script>
+    import Sidebar from "~/components/Sidebar.svelte";
+    import Navbar from "~/components/Navbar.svelte";
+    import Footer from "~/components/Footer.svelte";
+    import { params } from "@roxi/routify";
+    import DocsStore from "~/app/DocsStore";
+    import Searchbar from "~/components/Searchbar.svelte";
+    import Loader from "~/components/Loader.svelte";
+    import Sources from "~/data/sources";
+    import markdown from "~/app/Markdown";
+    import ParamsTable from "~/components/ParamsTable.svelte";
+    import ViewSource from "~/components/ViewSource.svelte";
+
+    const { source, tag, typedef } = $params;
+
+    const docsSource = new DocsStore(Sources[source]);
+    let docs = null,
+        content = null;
+
+    docsSource.fetchDocs().then((doc) => {
+        doc = doc.find((x) => x.tag === tag);
+        docs = doc.typedefs.find((c) => c.name === typedef);
+        docs.globalName = doc.global;
+        docs.sourceLink = docsSource.manager.source;
+        console.log(docs);
+
+        if (!docs) content = "# Docs not found!";
+    });
+</script>
+
+<Navbar />
+{#if docs}
+    <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full">
+        <Searchbar />
+
+        <div class="lg:flex mx-auto w-full max-w-screen-2xl">
+            <Sidebar data={docsSource.docs} />
+            <div class="porse break-words mx-auto py-16 px-4 sm:px-8 lg:py-8 w-full max-w-4xl lg:max-w-7xl">
+                {#if content !== null}
+                    {@html markdown(content)}
+                {:else}
+                    <div class="flex">
+                        <h1 class="text-3xl dark:text-white text-black font-bold">{docs.name}</h1>
+                        <ViewSource url={`${docs.sourceLink}/${tag}/${docs.meta.path}/${docs.meta.file}#L${docs.meta.line}`} />
+                    </div>
+                    <span class="text-md dark:text-gray-300">{@html docs.description ?? ""}</span>
+                    <div>
+                        {#if docs.props}
+                            <ParamsTable data={docs.props} />
+                        {/if}
+                        {#if docs.type}
+                            <h3 class="font-semibold text-lg">Type: <span class="text-blurple-500 hover:text-blurple-600 cursor-pointer">{docs.type.flat(Infinity).join(" ")}</span></h3>
+                        {/if}
+                    </div>
+                {/if}
+            </div>
+        </div>
+    </div>
+{:else}
+    <Loader />
+{/if}
+<Footer />
