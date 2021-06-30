@@ -1,7 +1,7 @@
 module.exports = {
     purge: {
         enabled: true,
-        content: ["./public/index.html", "./src/**/*.svelte"]
+        content: ["./public/index.html", "./src/**/*.svelte", "./src/app/Markdown.js"]
     },
     darkMode: "class",
     theme: {
