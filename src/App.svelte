@@ -193,4 +193,20 @@
     blockquote:hover {
         background-color: #cecece;
     }
+
+    .warn {
+        background-color: #ff4141;
+        width: fit-content;
+        color: #ffffff;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .info {
+        background-color: #ffff2d;
+        width: fit-content;
+        color: #000000;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
 </style>
