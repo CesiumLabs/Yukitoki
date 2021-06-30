@@ -22,7 +22,6 @@
         docs = doc.typedefs.find((c) => c.name === typedef);
         docs.globalName = doc.global;
         docs.sourceLink = docsSource.manager.source;
-        console.log(docs);
 
         if (!docs) content = "# Docs not found!";
     });
@@ -49,6 +48,7 @@
                             <ParamsTable data={docs.props} />
                         {/if}
                         {#if docs.type}
+                            <!-- @todo add type links -->
                             <h3 class="font-semibold text-lg">Type: <span class="text-blurple-500 hover:text-blurple-600 cursor-pointer">{docs.type.flat(Infinity).join(" ")}</span></h3>
                         {/if}
                     </div>

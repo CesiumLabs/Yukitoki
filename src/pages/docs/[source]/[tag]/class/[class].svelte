@@ -23,7 +23,6 @@
         docs = doc.classes.find((c) => c.name === className);
         docs.globalName = doc.global;
         docs.sourceLink = docsSource.manager.source;
-        console.log(docs);
 
         if (!docs) content = "# Docs not found!";
     });
@@ -101,6 +100,10 @@
                                                     <div class="data-type">
                                                         {#if getName(prop)}
                                                             <h3 class="font-semibold text-lg">Scope: <Badge name={getName(prop)} /></h3>
+                                                            {#if prop.type || prop.returns}
+                                                                <!-- @todo add type links -->
+                                                                <h3 class="font-semibold text-lg">{prop.type ? "Type" : "Returns"}: {(prop.type || prop.returns).flat(Infinity).join("")}</h3>
+                                                            {/if}
                                                         {/if}
                                                     </div>
                                                 </div>

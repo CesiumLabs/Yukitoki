@@ -33,6 +33,7 @@
         </thead>
         <tbody class="text-black dark:text-white dark:bg-gray-700 bg-gray-300 text-center font-medium">
             {#each data.map((m) => {
+                // @todo add type links
                 m.dataType = m.type.flat(Infinity).map((m) => ` ${m} `);
                 return m;
             }) as m}
