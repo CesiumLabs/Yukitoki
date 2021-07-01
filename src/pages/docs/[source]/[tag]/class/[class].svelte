@@ -32,11 +32,30 @@
         if ("access" in item && item.access?.length) return item.access;
         if ("scope" in item && item.scope?.length) return item.scope;
     }
+
+    function scrollToProp(id) {
+        // if (!id) return;
+        // const propElm = document.getElementById(`scroll-prop-${id}`);
+        // const parentElm = document.getElementById("relativeContainer");
+        // if (!propElm || !parentElm) return;
+        // const offsets = {
+        //     parent: parentElm.getBoundingClientRect(),
+        //     child: propElm.getBoundingClientRect()
+        // };
+        // const position = {
+        //     top: offsets.child.top - offsets.parent.top,
+        //     right: offsets.child.right - offsets.parent.right,
+        //     bottom: offsets.child.bottom - offsets.parent.bottom,
+        //     left: offsets.child.left - offsets.parent.left
+        // };
+        // window.scrollBy(position);
+        // propElm.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
 </script>
 
 <Navbar />
 {#if docs}
-    <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full">
+    <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
         <Searchbar />
 
         <div class="lg:flex mx-auto w-full max-w-screen-2xl">
@@ -67,8 +86,8 @@
                                     <h1 class="text-xl font-bold uppercase">{item.name}</h1>
                                     <ul>
                                         {#each item.data as prop}
-                                            <li style="list-style-type:none;" class="cursor-pointer text-lg text-blurple-500 px-2 font-semibold border-l-2 hover:border-blurple-500">
-                                                <a href="#{prop.name}" target="_self">{prop.name}</a>
+                                            <li on:click={() => scrollToProp(prop.name)} style="list-style-type:none;" class="cursor-pointer text-lg text-blurple-500 px-2 font-semibold border-l-2 hover:border-blurple-500">
+                                                {prop.name}
                                             </li>
                                         {/each}
                                     </ul>
@@ -82,7 +101,7 @@
                                     <h1 class="text-3xl font-bold uppercase">{item.name}</h1>
                                     <div class="prop-data py-5">
                                         {#each item.data as prop}
-                                            <div id={prop.name} class="py-3">
+                                            <div id="scroll-prop-{prop.name}" class="py-3">
                                                 <div class="flex">
                                                     <h1 class="text-xl font-semibold text-blurple-500">
                                                         {item.name === "Events" ? "" : "."}{prop.name}{item.name === "Methods" ? `(${prop.params?.map((m) => m.name).join(", ") || ""});` : ""}

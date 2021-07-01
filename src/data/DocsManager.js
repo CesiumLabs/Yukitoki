@@ -78,9 +78,11 @@ class DocsManager {
     }
 
     async fetchDocs(tag) {
-        return await fetch(`https://raw.githubusercontent.com/${this.repo}/docs/${tag}.json`).then((res) => {
-            if (!res.ok) throw new Error("Could not fetch docs data");
-            return res.json();
+        return await fetch(`https://raw.githubusercontent.com/${this.repo}/docs/${tag}.json`).then(async (res) => {
+            if (!res.ok && !window.localStorage.getItem(`docs-${tag}`)) throw new Error("Could not fetch docs data");
+            const doc = res.ok ? await res.json() : JSON.parse(window.localStorage.getItem(`docs-${tag}`));
+            window.localStorage.setItem(`docs-${tag}`, JSON.stringify(doc));
+            return doc;
         });
     }
 }

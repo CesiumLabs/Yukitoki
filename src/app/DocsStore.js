@@ -1,7 +1,16 @@
 class DocsStore {
     constructor(manager) {
         this.manager = manager;
-        this.docs = [];
+        this._docs = [];
+    }
+
+    get docs() {
+        if (this._docs.length) return this._docs;
+        return window.sessionStorage.getItem("__docs__") ? JSON.parse(window.sessionStorage.getItem("__docs__")) : this._docs;
+    }
+
+    set docs(docs) {
+        this._docs = docs;
     }
 
     async fetchDocs() {
@@ -48,6 +57,8 @@ class DocsStore {
                 return documentation;
             })
         );
+
+        window.sessionStorage.setItem("__docs__", JSON.stringify(data));
         this.docs = data;
 
         return this.docs;

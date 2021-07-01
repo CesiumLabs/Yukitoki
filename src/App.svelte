@@ -30,6 +30,7 @@
     @tailwind components;
     @tailwind utilities;
 
+    html,
     body {
         scroll-behavior: smooth;
     }
