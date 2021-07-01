@@ -15,7 +15,7 @@
         const src = document.getElementById("docsource");
         const branch = document.getElementById("docbranch");
 
-        window.location.href = `/docs/${src?.value ?? source}/${branch?.value ?? tag}${category ? `/${category}` : ""}${file ? `/${file}` : ""}`;
+        window.location.href = `/docs/${src?.value ?? source}/${branch?.value ?? tag}${`/${category || currentDoc.defaultFile.category}` || ""}${`/${file || currentDoc.defaultFile.id}` || ""}`;
     }
 
     const sidebarProps = ["custom", "classes", "typedefs"]

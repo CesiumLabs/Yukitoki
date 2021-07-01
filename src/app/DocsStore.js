@@ -29,6 +29,7 @@ class DocsStore {
                 documentation.source = this.manager.source;
                 documentation.id = this.manager.id;
                 documentation.tag = m;
+                documentation.defaultFile = this.manager.defaultFile;
 
                 for (const c of documentation.classes) {
                     if (c.props) {
