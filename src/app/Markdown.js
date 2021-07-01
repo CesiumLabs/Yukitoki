@@ -29,6 +29,6 @@ marked.use({
 });
 
 export default function markdown(input) {
-    const content = marked(input);
+    const content = marked(input || "");
     return `<div class="space-y-2 spaxe-x-2">${content.replace(/<(info|warn)>([\s\S]+)<\/\1>/gi, '<div class="$1">$2</div>')}</div>`;
 }
