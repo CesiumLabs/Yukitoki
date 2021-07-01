@@ -6,5 +6,5 @@
 </script>
 
 <span class="cursor-pointer text-blurple-500 hover:text-blurple-600 ml-auto text-2xl">
-    <a href={url} target="_blank"><FontAwesomeIcon icon={faCode} /></a>
+    <a href={url} target="_blank" rel="noreferrer"><FontAwesomeIcon icon={faCode} /></a>
 </span>

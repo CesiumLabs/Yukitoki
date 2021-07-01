@@ -47,11 +47,11 @@ class DocsStore {
                 }
 
                 for (const c of documentation.classes) {
-                    documentation.links[c.name] = { name: "docs-source-tag-class-class", params: { class: c.name } };
+                    documentation.links[c.name] = { name: "docs-tag-class", params: { class: c.name } };
                 }
 
                 for (const t of documentation.typedefs) {
-                    documentation.links[t.name] = { name: "docs-source-tag-typedef-typedef", params: { typedef: t.name } };
+                    documentation.links[t.name] = { name: "docs-tag-typedef", params: { typedef: t.name } };
                 }
 
                 return documentation;

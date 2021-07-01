@@ -12,6 +12,7 @@
     import Badge from "~/components/Badge.svelte";
     import ViewSource from "~/components/ViewSource.svelte";
     import Scroller from "./_scroller.svelte";
+    import TypeLink from "~/components/TypeLink.svelte";
 
     const { source, tag, class: className } = $params;
 
@@ -30,9 +31,15 @@
     }
 
     function getName(item) {
-        if (item.async) return "async";
-        if ("access" in item && item.access?.length) return item.access;
-        if ("scope" in item && item.scope?.length) return item.scope;
+        let props = [];
+        if (item.readonly) props.push("readonly");
+        if (item.async) props.push("async");
+        if (item.abstract) props.push("abstract");
+        if (item.deprecated) props.push("deprecated");
+        if ("access" in item && item.access?.length) props.push(item.access);
+        if ("scope" in item && item.scope?.length) props.push(item.scope);
+
+        return props;
     }
 
     function scrollToProp(id) {
@@ -56,6 +63,7 @@
     function navigate(id, scroll = true) {
         $goto(`${$url()}?scrollTo=${id}`);
         if (scroll) scrollToProp(id);
+        else document.getElementById(`scroll-prop-${id}`)?.scrollIntoView(true);
     }
 </script>
 
@@ -81,7 +89,7 @@
                             {@html markdown(`\`\`\`js\nnew ${docs.globalName ? `${docs.globalName}.` : ""}${docs.construct?.name ?? docs.name}(${docs.construct?.params?.map((m) => m.name).join(", ") ?? ""});\n\`\`\``)}
                             {#if docs.construct?.params?.length}
                                 <div class="mt-6">
-                                    <ParamsTable data={docs.construct.params} />
+                                    <ParamsTable data={docs.construct.params} docs={docsSource.docs} />
                                 </div>
                             {/if}
                         </div>
@@ -121,15 +129,23 @@
                                                         <p class="font-semibold text-lg">{@html markdown(prop.description)}</p>
                                                     {/if}
                                                     {#if prop.params}
-                                                        <ParamsTable data={prop.params} />
+                                                        <ParamsTable data={prop.params} docs={docsSource.docs} />
                                                     {/if}
                                                     <div class="data-type">
-                                                        {#if getName(prop)}
-                                                            <h3 class="font-semibold text-lg">Scope: <Badge name={getName(prop)} /></h3>
-                                                            {#if prop.type || prop.returns}
-                                                                <!-- @todo add type links -->
-                                                                <h3 class="font-semibold text-lg">{prop.type ? "Type" : "Returns"}: {(prop.type || prop.returns).flat(Infinity).join("")}</h3>
-                                                            {/if}
+                                                        {#if getName(prop).length}
+                                                            <h3 class="font-semibold text-lg">
+                                                                Scope: <span class="space-x-2">
+                                                                    {#each getName(prop) as scopeName}
+                                                                        <Badge name={scopeName} />
+                                                                    {/each}
+                                                                </span>
+                                                            </h3>
+                                                        {/if}
+                                                        {#if prop.type || (prop.returns ? prop.returns : !prop.type ? (prop.returns = ["void"]) : false)}
+                                                            <div class="font-semibold text-lg inline-flex space-x-1">
+                                                                <h1>{prop.type ? "Type" : "Returns"}:</h1>
+                                                                <TypeLink docs={docsSource.docs} {prop} meta={$params} />
+                                                            </div>
                                                         {/if}
                                                     </div>
                                                 </div>

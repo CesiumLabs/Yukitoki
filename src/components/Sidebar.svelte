@@ -76,23 +76,19 @@
                 {#if prop.type === "custom"}
                     {#each Object.keys(prop.data) as item}
                         <label for="files" class="font-semibold text-lg uppercase">{prop.data[item].name}</label>
-                        <ul id="files">
+                        <div id="files" class="flex flex-col">
                             {#each Object.entries(prop.data[item].files) as [filename, file]}
-                                <li class="sidebar-item-selector">
-                                    <a target="_self" href={$url(`/docs/${source}/${tag}/${item}/${filename}`)}>{file.name}</a>
-                                </li>
+                                <a class="sidebar-item-selector font-semibold" target="_self" href={$url(`/docs/${source}/${tag}/${item}/${filename}`)}>{file.name}</a>
                             {/each}
-                        </ul>
+                        </div>
                     {/each}
                 {:else}
                     <label for={prop.type} class="font-semibold text-lg uppercase">{prop.type}</label>
-                    <ul id={prop.type}>
+                    <div id={prop.type} class="flex flex-col">
                         {#each Object.values(prop.data) as item}
-                            <li class="sidebar-item-selector">
-                                <a target="_self" href={$url(`/docs/${source}/${tag}/${prop.type}/${item.name}`)}>{item.name}</a>
-                            </li>
+                            <a class="sidebar-item-selector font-semibold" target="_self" href={$url(`/docs/${source}/${tag}/${prop.type}/${item.name}`)}>{item.name}</a>
                         {/each}
-                    </ul>
+                    </div>
                 {/if}
             {/each}
         </nav>

@@ -10,6 +10,7 @@
     import markdown from "~/app/Markdown";
     import ParamsTable from "~/components/ParamsTable.svelte";
     import ViewSource from "~/components/ViewSource.svelte";
+    import TypeLink from "~/components/TypeLink.svelte";
 
     const { source, tag, typedef } = $params;
 
@@ -45,11 +46,13 @@
                     <span class="text-md dark:text-gray-300">{@html docs.description ?? ""}</span>
                     <div>
                         {#if docs.props}
-                            <ParamsTable data={docs.props} />
+                            <ParamsTable data={docs.props} docs={docsSource.docs} />
                         {/if}
                         {#if docs.type}
-                            <!-- @todo add type links -->
-                            <h3 class="font-semibold text-lg">Type: <span class="text-blurple-500 hover:text-blurple-600 cursor-pointer">{docs.type.flat(Infinity).join(" ")}</span></h3>
+                            <div class="font-semibold text-lg inline-flex space-x-1">
+                                <h1>Type:</h1>
+                                <TypeLink docs={docsSource.docs} prop={docs} meta={$params} />
+                            </div>
                         {/if}
                     </div>
                 {/if}

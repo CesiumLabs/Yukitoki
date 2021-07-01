@@ -2,8 +2,10 @@
     import markdown from "~/app/Markdown";
     import { FontAwesomeIcon } from "fontawesome-svelte";
     import { faCheck, faTimes } from "@fortawesome/free-solid-svg-icons";
+    import TypeLink from "~/components/TypeLink.svelte";
+    import { params } from "@roxi/routify";
 
-    export let data;
+    export let data, docs;
 </script>
 
 <div class="border-l-2 hover:border-blurple-500 transition overflow-y-auto">
@@ -32,23 +34,13 @@
             </tr>
         </thead>
         <tbody class="text-black dark:text-white dark:bg-gray-700 bg-gray-300 text-center font-medium">
-            {#each data.map((m) => {
-                // @todo add type links
-                m.dataType = m.type.flat(Infinity).map((m) => ` ${m} `);
-                return m;
-            }) as m}
+            {#each data as m}
                 <tr>
                     <td>
                         <span>{m.name}</span>
                     </td>
                     <td class="px-16 py-2 font-semibold">
-                        {#each m.dataType as t}
-                            {#if t === "or"}
-                                <span class="px-1">{t}</span>
-                            {:else}
-                                <span class="cursor-pointer text-blurple-700 dark:text-blurple-500">{t}</span>
-                            {/if}
-                        {/each}
+                        <TypeLink prop={m} meta={$params} {docs} />
                     </td>
                     {#if data.some((x) => !!x.optional)}
                         <td>

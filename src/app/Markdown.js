@@ -10,7 +10,7 @@ marked.use({
         link: (href, title, text) => {
             const local = href?.startsWith(`${location.protocol}//${location.hostname}`);
             const html = renderer.link.call(renderer, href, title, text);
-            return local ? html : html.replace(/^<a /, '<a target="_blank" rel="noopener" class="text-blurple-500 hover:text-blurple-600"');
+            return local ? html : html.replace(/^<a /, '<a target="_blank" rel="noreferrer" class="text-blurple-500 hover:text-blurple-600"');
         },
         code: (src) => {
             return `<pre class="my-0 break-words overflow-x-auto bg-gray-50 dark:bg-gray-900 p-5"><code class="yukitoki-code">${highlight.highlightAuto(src).value}</code></pre>`;
