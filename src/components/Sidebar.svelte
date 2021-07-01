@@ -82,7 +82,7 @@
                             {/each}
                         </div>
                     {/each}
-                {:else}
+                {:else if Object.keys(prop.data).length}
                     <label for={prop.type} class="font-semibold text-lg uppercase">{prop.type}</label>
                     <div id={prop.type} class="flex flex-col">
                         {#each Object.values(prop.data) as item}
