@@ -71,7 +71,7 @@
 {#if docs}
     <Scroller />
     <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
-        <Searchbar />
+        <Searchbar docs={docsSource.docs} />
 
         <div class="lg:flex mx-auto w-full max-w-screen-2xl">
             <Sidebar data={docsSource.docs} />

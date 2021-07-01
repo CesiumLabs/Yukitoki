@@ -53,7 +53,7 @@
             </button>
         </div>
 
-        <nav class="my-5 px-2 space-y-1 z-10 py-3 select-none">
+        <nav class="my-5 px-2 space-y-1 py-3 select-none">
             <ul>
                 <li class="flex flex-col">
                     <label for="docsource" class="font-semibold text-lg">Source</label>
