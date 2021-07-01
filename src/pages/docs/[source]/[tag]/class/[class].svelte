@@ -53,9 +53,9 @@
         window.scrollBy(position);
     }
 
-    function navigate(id) {
+    function navigate(id, scroll = true) {
         $goto(`${$url()}?scrollTo=${id}`);
-        scrollToProp(id);
+        if (scroll) scrollToProp(id);
     }
 </script>
 
@@ -110,7 +110,7 @@
                                         {#each item.data as prop}
                                             <div id="scroll-prop-{prop.name}" class="py-3">
                                                 <div class="flex">
-                                                    <h1 class="text-xl font-semibold text-blurple-500">
+                                                    <h1 class="text-xl font-semibold text-blurple-500 hover:text-blurple-600 cursor-pointer" on:click={() => navigate(prop.name, false)}>
                                                         {item.name === "Events" ? "" : "."}{prop.name}{item.name === "Methods" ? `(${prop.params?.map((m) => m.name).join(", ") || ""});` : ""}
                                                     </h1>
                                                     <ViewSource url={`${docs.sourceLink}/${tag}/${prop.meta.path}/${prop.meta.file}#L${prop.meta.line}`} />
