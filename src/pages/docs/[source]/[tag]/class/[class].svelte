@@ -2,7 +2,7 @@
     import Sidebar from "~/components/Sidebar.svelte";
     import Navbar from "~/components/Navbar.svelte";
     import Footer from "~/components/Footer.svelte";
-    import { params } from "@roxi/routify";
+    import { params, goto, url } from "@roxi/routify";
     import DocsStore from "~/app/DocsStore";
     import Searchbar from "~/components/Searchbar.svelte";
     import Loader from "~/components/Loader.svelte";
@@ -11,6 +11,7 @@
     import ParamsTable from "~/components/ParamsTable.svelte";
     import Badge from "~/components/Badge.svelte";
     import ViewSource from "~/components/ViewSource.svelte";
+    import Scroller from "./_scroller.svelte";
 
     const { source, tag, class: className } = $params;
 
@@ -18,14 +19,15 @@
     let docs = null,
         content = null;
 
-    docsSource.fetchDocs().then((doc) => {
-        doc = doc.find((x) => x.tag === tag);
-        docs = doc.classes.find((c) => c.name === className);
-        docs.globalName = doc.global;
-        docs.sourceLink = docsSource.manager.source;
-
-        if (!docs) content = "# Docs not found!";
-    });
+    if (!docs) {
+        docsSource.fetchDocs().then((doc) => {
+            doc = doc.find((x) => x.tag === tag);
+            docs = doc.classes.find((c) => c.name === className);
+            if (!docs) content = "# Docs not found!";
+            docs.globalName = doc.global;
+            docs.sourceLink = docsSource.manager.source;
+        });
+    }
 
     function getName(item) {
         if (item.async) return "async";
@@ -34,27 +36,32 @@
     }
 
     function scrollToProp(id) {
-        // if (!id) return;
-        // const propElm = document.getElementById(`scroll-prop-${id}`);
-        // const parentElm = document.getElementById("relativeContainer");
-        // if (!propElm || !parentElm) return;
-        // const offsets = {
-        //     parent: parentElm.getBoundingClientRect(),
-        //     child: propElm.getBoundingClientRect()
-        // };
-        // const position = {
-        //     top: offsets.child.top - offsets.parent.top,
-        //     right: offsets.child.right - offsets.parent.right,
-        //     bottom: offsets.child.bottom - offsets.parent.bottom,
-        //     left: offsets.child.left - offsets.parent.left
-        // };
-        // window.scrollBy(position);
-        // propElm.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (!id) return;
+        const propElm = document.getElementById(`scroll-prop-${id}`);
+        const parentElm = document.getElementById("relativeContainer");
+        if (!propElm || !parentElm) return;
+
+        const offsets = {
+            parent: parentElm.getBoundingClientRect(),
+            child: propElm.getBoundingClientRect()
+        };
+
+        const position = {
+            top: offsets.child.top - offsets.parent.top
+        };
+
+        window.scrollBy(position);
+    }
+
+    function navigate(id) {
+        $goto(`${$url()}?scrollTo=${id}`);
+        scrollToProp(id);
     }
 </script>
 
 <Navbar />
 {#if docs}
+    <Scroller />
     <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
         <Searchbar />
 
@@ -86,7 +93,7 @@
                                     <h1 class="text-xl font-bold uppercase">{item.name}</h1>
                                     <ul>
                                         {#each item.data as prop}
-                                            <li on:click={() => scrollToProp(prop.name)} style="list-style-type:none;" class="cursor-pointer text-lg text-blurple-500 px-2 font-semibold border-l-2 hover:border-blurple-500">
+                                            <li on:click={() => navigate(prop.name)} style="list-style-type:none;" class="cursor-pointer text-lg text-blurple-500 px-2 font-semibold border-l-2 hover:border-blurple-500">
                                                 {prop.name}
                                             </li>
                                         {/each}
