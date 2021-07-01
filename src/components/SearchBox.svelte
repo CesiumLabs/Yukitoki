@@ -7,6 +7,8 @@
     function close() {
         searchResults = null;
     }
+
+    console.log(searchResults);
 </script>
 
 {#if searchResults}
