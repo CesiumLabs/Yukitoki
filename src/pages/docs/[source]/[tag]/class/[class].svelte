@@ -147,6 +147,14 @@
                                                                 <TypeLink docs={docsSource.docs} {prop} meta={$params} />
                                                             </div>
                                                         {/if}
+                                                        {#if prop.examples && prop.examples.length}
+                                                            <h3 class="font-semibold text-lg">Examples:</h3>
+                                                            {#each prop.examples as example}
+                                                                <div class="my-3">
+                                                                    {@html markdown(`\`\`\`js\n${example}\n\`\`\``)}
+                                                                </div>
+                                                            {/each}
+                                                        {/if}
                                                     </div>
                                                 </div>
                                             </div>
