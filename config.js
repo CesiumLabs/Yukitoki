@@ -40,6 +40,16 @@ const config = {
         TITLE: "About",
         VALUE: "A customizable website to view docs for your projects"
     },
+    DESCRIPTION_LIST: {
+        TITLE: "Why?",
+        VALUE: [
+            "Fast",
+            "Easy to install",
+            "Responsive",
+            "Dark & Light mode",
+            "Custom 404 page"
+        ]
+    },
     FOOTER: {
         HEADER: "Yukitoki",
         DESCRIPTION: "Custom documentation viewing website"

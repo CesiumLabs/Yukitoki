@@ -59,13 +59,11 @@
         <p class="text-lg font-semibold">{config.DESCRIPTION.VALUE}</p>
     </div>
     <div class="why py-4 px-6 md:mx-auto">
-        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-gray-800">Why</h1>
+        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-gray-800">{config.DESCRIPTION_LIST.TITLE}</h1>
         <ul class="text-lg font-semibold list-disc">
-            <li>Fast</li>
-            <li>Easy to install</li>
-            <li>Responsive</li>
-            <li>Dark & Light mode</li>
-            <li>Custom 404 page</li>
+            {#each config.DESCRIPTION_LIST.VALUE as item}
+                <li>{item}</li>
+            {/each}
         </ul>
     </div>
 </div>

@@ -8,5 +8,6 @@ export default new DocsManager({
     global: "Yukitoki",
     repo: "DevSnowflake/yukitoki-docs",
     defaultTag: "main",
+    docsBranch: "docs",
     branchFilter: (branch) => !blacklisted.has(branch)
 });

@@ -8,5 +8,5 @@
 
     <hr class="w-1/3 mx-auto border-t-2 border-gray-200 py-3" />
 
-    <p class="text-white">&copy; <a class="hover:text-gray-300" href="https://github.com/DevSnowflake">Snowflake Studio ❄</a> - {new Date().getFullYear()}</p>
+    <p class="text-white">Yukitoki - &copy; <a class="hover:text-gray-300" href="https://github.com/DevSnowflake">Snowflake Studio ❄</a> - {new Date().getFullYear()}</p>
 </footer>
