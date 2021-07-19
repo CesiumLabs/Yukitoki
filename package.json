@@ -8,7 +8,7 @@
     "dev:rollup": "rollup -c -w",
     "dev:routify": "routify",
     "start": "sirv public --single --no-clear",
-    "format": "prettier --write src/*.{js,json,ts,html,svelte} src/**/*.{js,json,ts,html,svelte}"
+    "format": "prettier --write config.js src/*.{js,json,ts,html,svelte} src/**/*.{js,json,ts,html,svelte}"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.2",
