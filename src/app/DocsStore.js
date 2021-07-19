@@ -7,7 +7,7 @@ class DocsStore {
 
     get docs() {
         if (this._docs.length) return this._docs;
-        return window.sessionStorage.getItem("__docs__") ? JSON.parse(window.sessionStorage.getItem("__docs__")) : this._docs;
+        return window.sessionStorage.getItem(`docs-${this.manager.id}`) ? JSON.parse(window.sessionStorage.getItem(`docs-${this.manager.id}`)) : this._docs;
     }
 
     set docs(docs) {
@@ -60,7 +60,7 @@ class DocsStore {
             })
         );
 
-        window.sessionStorage.setItem("__docs__", JSON.stringify(data));
+        window.sessionStorage.setItem(`docs-${this.manager.id}`, JSON.stringify(data));
         this.docs = data;
 
         return this.docs;

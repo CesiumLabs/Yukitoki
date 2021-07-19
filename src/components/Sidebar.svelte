@@ -2,6 +2,7 @@
     import { params, url } from "@roxi/routify";
     import { FontAwesomeIcon } from "fontawesome-svelte";
     import { faChevronCircleRight, faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+    import Sources from "~/data/sources";
 
     export let data;
 
@@ -13,9 +14,8 @@
 
     function updateData() {
         const src = document.getElementById("docsource");
-        const branch = document.getElementById("docbranch");
 
-        window.location.href = `/docs/${src?.value ?? source}/${branch?.value ?? tag}${`/${category || currentDoc.defaultFile.category}` || ""}${`/${file || currentDoc.defaultFile.id}` || ""}`;
+        window.location.href = `/docs/${Sources[src?.value ?? source].id}/${Sources[src?.value ?? source].defaultTag}${`/${category || currentDoc.defaultFile.category}` || ""}${`/${file || currentDoc.defaultFile.id}` || ""}`;
     }
 
     const sidebarProps = ["custom", "classes", "typedefs"]
@@ -58,8 +58,12 @@
                 <li class="flex flex-col">
                     <label for="docsource" class="font-semibold text-lg">Source</label>
                     <select on:input={updateData} id="docsource" class="form-select rounded-md border-transparent bg-gray-100 focus:border-gray-500 focus:bg-white focus:ring-0 text-black">
-                        {#each [...new Set(data.map((m) => m.id))] as doc}
-                            <option value={doc} selected={doc === source ? "true" : "false"}>{doc}</option>
+                        {#each Object.keys(Sources) as doc}
+                            {#if doc === source}
+                                <option value={doc} selected>{doc}</option>
+                            {:else}
+                                <option value={doc}>{doc}</option>
+                            {/if}
                         {/each}
                     </select>
                 </li>
