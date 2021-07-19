@@ -14,8 +14,9 @@
 
     function updateData() {
         const src = document.getElementById("docsource");
+        const branch = (currentID === src.value ? document.getElementById("docbranch")?.value : Sources[src?.value ?? source].defaultTag) ?? currentBranch;
 
-        window.location.href = `/docs/${Sources[src?.value ?? source].id}/${Sources[src?.value ?? source].defaultTag}${`/${category || currentDoc.defaultFile.category}` || ""}${`/${file || currentDoc.defaultFile.id}` || ""}`;
+        window.location.href = `/docs/${src.value}/${branch}${`/${category || currentDoc.defaultFile.category}` || ""}${`/${file || currentDoc.defaultFile.id}` || ""}`;
     }
 
     const sidebarProps = ["custom", "classes", "typedefs"]
