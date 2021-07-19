@@ -43,6 +43,7 @@
     "lodash": "^4.17.21",
     "marked": "^2.1.3",
     "semver": "^7.3.5",
-    "sirv-cli": "^1.0.0"
+    "sirv-cli": "^1.0.0",
+    "svelte-switch": "0.0.4"
   }
 }
