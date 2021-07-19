@@ -4,7 +4,7 @@
     import Footer from "~/components/Footer.svelte";
     import YukitokiSource from "~/data/YukitokiSource";
     import DocsStore from "~/app/DocsStore";
-    import Sources from "~/data/Sources";
+    import Sources from "~/data/sources";
     import { goto } from "@roxi/routify";
 
     const docsSource = new DocsStore(YukitokiSource);
