@@ -4,13 +4,7 @@
     import { FontAwesomeIcon } from "fontawesome-svelte";
     const config = window.yukitoki.config;
     let currentTheme = window.yukitoki.theme;
-const checkedValue = false;
-function toggleChange(e){
-  const {checked} = e.detail;
-checkedValue = checked;
-window.yukitoki.toggleTheme();
-currentTheme = window.yukitoki.theme;
-}
+let checkedValue = false;
     function toggleMobileMenu(ev) {
         ev.preventDefault();
         const elm = document.getElementById("mobile-menu");
@@ -26,9 +20,11 @@ currentTheme = window.yukitoki.theme;
         }
     }
 
-    function toggleTheme() {
-        window.yukitoki.toggleTheme();
-        currentTheme = window.yukitoki.theme;
+    function toggleTheme(e) {
+      const {checked} = e.detail;
+      checkedValue = checked;
+      window.yukitoki.toggleTheme();
+      currentTheme = window.yukitoki.theme;
     }
 </script>
 
@@ -59,9 +55,8 @@ currentTheme = window.yukitoki.theme;
             </div>
 
             <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
-                <button on:click={toggleTheme} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expanded="false">
                     <span class="sr-only">#</span>
-                    <Switch on:change={toggleChange} checked={checkedValue} width={70} onColor={"#4A67CF"}>
+                    <Switch on:change={toggleTheme} checked={checkedValue} width={70} onColor={"#4A67CF"}>
                       <div slot="unCheckedIcon">
                         </div>
                         <div 
@@ -69,7 +64,6 @@ currentTheme = window.yukitoki.theme;
                         <FontAwesomeIcon icon={faMoon} />
                         </div>
                       </Switch>
-                </button>
             </div>
 
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -99,10 +93,8 @@ currentTheme = window.yukitoki.theme;
                     </a>
                 {/if}
             {/each}
-            <button on:click={toggleTheme} type="button" class="p-2 rounded-md text-white text-2xl" aria-controls="mobile-menu" aria-expan
-            ded="false">
                 <span class="sr-only">#</span>
-                <Switch on:change={toggleChange} checked={checkedValue} width={70} onColor={"#4A67CF"}>
+                <Switch on:change={toggleTheme} checked={checkedValue} width={70} onColor={"#4A67CF"}>
                       <div slot="unCheckedIcon">
                         </div>
                         <div 
@@ -110,7 +102,6 @@ currentTheme = window.yukitoki.theme;
                         <FontAwesomeIcon icon={faMoon} />
                         </div>
                       </Switch>
-            </button>
         </div>
     </div>
 </header>
