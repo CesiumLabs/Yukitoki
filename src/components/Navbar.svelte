@@ -56,7 +56,7 @@ let checkedValue = false;
 
             <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
                     <span class="sr-only">#</span>
-                    <Switch on:change={toggleTheme} checked={checkedValue} width={70} onColor={"#4A67CF"}>
+                    <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
                       <div slot="unCheckedIcon">
                         </div>
                         <div 
@@ -94,7 +94,7 @@ let checkedValue = false;
                 {/if}
             {/each}
                 <span class="sr-only">#</span>
-                <Switch on:change={toggleTheme} checked={checkedValue} width={70} onColor={"#4A67CF"}>
+                <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
                       <div slot="unCheckedIcon">
                         </div>
                         <div 
