@@ -1,18 +1,27 @@
 <script>
     import { faSearch } from "@fortawesome/free-solid-svg-icons";
     import { FontAwesomeIcon } from "fontawesome-svelte";
+    import Popup from "svelte-atoms/Popup.svelte";
     import Search from "~/app/Search";
     import { params } from "@roxi/routify";
+    import Button from "svelte-atoms/Button.svelte";
     import SearchBox from "./SearchBox.svelte";
-
     export let docs;
     let searchResult = null;
-
+ let isOpen = false;
+ const open = () =>{
+   isOpen = true;
+ }
+ const close = () =>{
+   isOpen = false;
+   searchResult = null;
+ }
     function search(event) {
         if (event.keyCode !== 13) return;
         const query = event.target.value;
 
         searchResult = Search(query, docs, $params);
+        open();
     }
 </script>
 
@@ -26,5 +35,12 @@
 </div>
 
 {#if searchResult}
+<Popup {isOpen} on:close={close} header="Results">
+  <div>
     <SearchBox searchResults={searchResult} />
+    </div>
+ <div slot="footer">
+    <Button on:click={close}>Close</Button>
+  </div>
+    </Popup>
 {/if}
