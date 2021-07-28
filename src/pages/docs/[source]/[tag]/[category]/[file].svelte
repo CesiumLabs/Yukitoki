@@ -19,7 +19,7 @@
         docs = doc.find((x) => x.tag === tag);
         let fileData = docs.custom[category]?.files[file];
 
-        if (!fileData) content = "# File not found!";
+        if (!fileData) return void (content = "# File not found!");
 
         if (fileData.type === "md") content = fileData.content;
         else content = `# ${fileData.name}\n\`\`\`${fileData.type}\n${fileData.content}\n\`\`\``;
