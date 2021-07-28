@@ -58,7 +58,7 @@
                 <span class="sr-only">#</span>
                 <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
                     <div slot="unCheckedIcon" />
-                    <div slot="checkedIcon">
+                    <div slot="checkedIcon" class="text-white">
                         <FontAwesomeIcon icon={faMoon} />
                     </div>
                 </Switch>

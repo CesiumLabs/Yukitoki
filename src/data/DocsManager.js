@@ -37,7 +37,9 @@ class DocsManager {
                 throw e;
             })
             .then((data) => {
-                const [branches, tags] = data;
+                let [branches, tags] = data;
+                if (branches == null) branches = [];
+                if (tags == null) tags = [];
 
                 this.tags = [this.defaultTag];
                 localStorage.setItem(`src-${this.id}`, JSON.stringify({ branches, tags }));
