@@ -1,10 +1,10 @@
 <script>
-  import Switch from "svelte-switch";
+    import Switch from "svelte-switch";
     import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
     import { FontAwesomeIcon } from "fontawesome-svelte";
     const config = window.yukitoki.config;
     let currentTheme = window.yukitoki.theme;
-let checkedValue = false;
+    let checkedValue = false;
     function toggleMobileMenu(ev) {
         ev.preventDefault();
         const elm = document.getElementById("mobile-menu");
@@ -21,10 +21,10 @@ let checkedValue = false;
     }
 
     function toggleTheme(e) {
-      const {checked} = e.detail;
-      checkedValue = checked;
-      window.yukitoki.toggleTheme();
-      currentTheme = window.yukitoki.theme;
+        const { checked } = e.detail;
+        checkedValue = checked;
+        window.yukitoki.toggleTheme();
+        currentTheme = window.yukitoki.theme;
     }
 </script>
 
@@ -55,15 +55,13 @@ let checkedValue = false;
             </div>
 
             <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
-                    <span class="sr-only">#</span>
-                    <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                      <div slot="unCheckedIcon">
-                        </div>
-                        <div 
-                        slot="checkedIcon">
+                <span class="sr-only">#</span>
+                <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
+                    <div slot="unCheckedIcon" />
+                    <div slot="checkedIcon">
                         <FontAwesomeIcon icon={faMoon} />
-                        </div>
-                      </Switch>
+                    </div>
+                </Switch>
             </div>
 
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -93,15 +91,13 @@ let checkedValue = false;
                     </a>
                 {/if}
             {/each}
-                <span class="sr-only">#</span>
-                <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                      <div slot="unCheckedIcon">
-                        </div>
-                        <div 
-                        slot="checkedIcon">
-                        <FontAwesomeIcon icon={faMoon} />
-                        </div>
-                      </Switch>
+            <span class="sr-only">#</span>
+            <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
+                <div slot="unCheckedIcon" />
+                <div slot="checkedIcon">
+                    <FontAwesomeIcon icon={faMoon} />
+                </div>
+            </Switch>
         </div>
     </div>
 </header>
