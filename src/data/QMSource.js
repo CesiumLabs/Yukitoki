@@ -1,6 +1,6 @@
 import DocsManager from "./DocsManager";
 
-const blacklisted = new Set(["main"]);
+const whitelisted = new Set(["main", "v4"]);
 
 export default new DocsManager({
     id: "quickmongo",
@@ -8,6 +8,6 @@ export default new DocsManager({
     global: "QuickMongo",
     repo: "DevSnowflake/quickmongo",
     defaultTag: "main",
-    branchFilter: (branch) => blacklisted.has(branch) && !branch.startsWith("dependabot/"),
+    branchFilter: (branch) => whitelisted.has(branch) && !branch.startsWith("dependabot/"),
     tagFilter: () => false
 });
