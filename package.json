@@ -1,6 +1,7 @@
 {
   "name": "yukitoki",
-  "version": "1.0.3",
+  "description": "A customizable website to view docs for your projects.",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "build": "routify -b && rollup -c",
@@ -45,5 +46,20 @@
     "semver": "^7.3.5",
     "sirv-cli": "^1.0.14",
     "svelte-switch": "0.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DevSnowflake/yukitoki.git"
+  },
+  "keywords": [
+    "yukitoki",
+    "docs",
+    "site"
+  ],
+  "author": "DevAndromeda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DevSnowflake/yukitoki/issues"
+  },
+  "homepage": "https://github.com/DevSnowflake/yukitoki#readme"
 }
