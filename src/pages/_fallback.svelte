@@ -21,7 +21,7 @@
         </h1>
         <p class="font-medium text-lg" id="lostmsg">{getRandomMsg()}</p>
     </div>
-    <a class="bg-blurple-600 p-3 rounded-md hover:bg-blurple-700 text-white font-semibold" href="/">Return Home</a>
+    <a class="bg-primary p-3 rounded-md hover:bg-primary-focused text-white font-semibold" href="/">Return Home</a>
 </div>
 
 <Footer />

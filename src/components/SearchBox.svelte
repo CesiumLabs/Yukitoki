@@ -20,7 +20,7 @@
                 <h1 class="text-center text-black">No results were found!</h1>
             {:else}
                 {#each searchResults as result}
-                    <a href={result.path} target="_self" class="p-3 text-center text-blurple-500 hover:text-white hover:bg-blurple-500 cursor-pointer">{result.text}</a>
+                    <a href={result.path} target="_self" class="p-3 text-center text-primary hover:text-white hover:bg-primary-focus cursor-pointer">{result.text}</a>
                 {/each}
             {/if}
         </div>

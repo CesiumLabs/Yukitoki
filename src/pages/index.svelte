@@ -34,7 +34,7 @@
 
 <Navbar />
 
-<div class="text-white bg-blurple-600 text-center py-20" id="containerElm">
+<div class="text-white bg-primary text-center py-20" id="containerElm">
     {#if config.HOME_LOGO?.TYPE === "IMAGE"}
         <img src={config.HOME_LOGO.VALUE} alt="img" class="mx-auto select-none" />
     {:else}
@@ -53,13 +53,13 @@
     </div>
 </div>
 
-<div class="text-gray-800 dark:text-gray-300 bg-white mx-auto dark:bg-gray-800 py-20 grid md:grid-cols-2 grid-cols-1 gap-2 md:gap-0">
+<div class="text-base-content dark:text-gray-300 bg-base-100 mx-auto dark:bg-gray-800 py-20 grid md:grid-cols-2 grid-cols-1 gap-2 md:gap-0">
     <div class="about py-4 px-6 md:mx-auto">
-        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-gray-800">{config.DESCRIPTION.TITLE}</h1>
+        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-base-content">{config.DESCRIPTION.TITLE}</h1>
         <p class="text-lg font-semibold">{config.DESCRIPTION.VALUE}</p>
     </div>
     <div class="why py-4 px-6 md:mx-auto">
-        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-gray-800">{config.DESCRIPTION_LIST.TITLE}</h1>
+        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-base-content">{config.DESCRIPTION_LIST.TITLE}</h1>
         <ul class="text-lg font-semibold list-disc">
             {#each config.DESCRIPTION_LIST.VALUE as item}
                 <li>{item}</li>

@@ -30,7 +30,7 @@
 
 <Navbar />
 {#if docs}
-    <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full">
+    <div class="text-base-content dark:text-white bg-base-100 dark:bg-gray-800 pt-3 w-full">
         <Searchbar docs={docsSource.docs} />
 
         <div class="lg:flex mx-auto w-full max-w-screen-2xl">
@@ -40,7 +40,7 @@
                     {@html markdown(content)}
                 {:else}
                     <div class="flex">
-                        <h1 class="text-3xl dark:text-white text-black font-bold">{docs.name}</h1>
+                        <h1 class="text-3xl dark:text-white text-base-content font-bold">{docs.name}</h1>
                         <ViewSource url={`${docs.sourceLink}/${tag}/${docs.meta.path}/${docs.meta.file}#L${docs.meta.line}`} />
                     </div>
                     <span class="text-md dark:text-gray-300">{@html docs.description ?? ""}</span>

@@ -1,5 +1,4 @@
 <script>
-    import Switch from "svelte-switch";
     import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
     import { FontAwesomeIcon } from "fontawesome-svelte";
     const config = window.yukitoki.config;
@@ -28,7 +27,7 @@
     }
 </script>
 
-<header class="bg-blurple-600 sticky top-0 z-20" id="navcontainer">
+<header class="bg-primary sticky top-0 z-20" id="navcontainer">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -55,13 +54,13 @@
             </div>
 
             <div class="absolute inset-y-0 right-0 items-center hidden md:block pt-3">
-                <span class="sr-only">#</span>
-                <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                    <div slot="unCheckedIcon" />
-                    <div slot="checkedIcon" class="text-white">
+                <span class="text-white text-xl cursor-pointer hover:opacity-70" on:click={toggleTheme}>
+                    {#if currentTheme === "light"}
                         <FontAwesomeIcon icon={faMoon} />
-                    </div>
-                </Switch>
+                    {:else}
+                        <FontAwesomeIcon icon={faSun} />
+                    {/if}
+                </span>
             </div>
 
             <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
@@ -91,13 +90,13 @@
                     </a>
                 {/if}
             {/each}
-            <span class="sr-only">#</span>
-            <Switch on:change={toggleTheme} checked={checkedValue} width={55} onColor={"#4A67CF"}>
-                <div slot="unCheckedIcon" />
-                <div slot="checkedIcon">
+            <span class="text-white text-xl font-medium cursor-pointer px-3 py-2 hover:opacity-70" on:click={toggleTheme}>
+                {#if currentTheme === "light"}
                     <FontAwesomeIcon icon={faMoon} />
-                </div>
-            </Switch>
+                {:else}
+                    <FontAwesomeIcon icon={faSun} />
+                {/if}
+            </span>
         </div>
     </div>
 </header>

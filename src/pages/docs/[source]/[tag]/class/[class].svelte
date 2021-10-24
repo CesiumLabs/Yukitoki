@@ -70,7 +70,7 @@
 <Navbar />
 {#if docs}
     <Scroller />
-    <div class="text-gray-800 dark:text-white bg-white dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
+    <div class="text-base-content dark:text-white bg-base-100 dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
         <Searchbar docs={docsSource.docs} />
 
         <div class="lg:flex mx-auto w-full max-w-screen-2xl">
@@ -81,7 +81,7 @@
                 {:else}
                     <div class="class-constructor-info">
                         <div class="flex">
-                            <h1 class="text-3xl dark:text-white text-black font-bold">{docs.construct?.name ?? docs.name}</h1>
+                            <h1 class="text-3xl dark:text-white text-base-content font-bold">{docs.construct?.name ?? docs.name}</h1>
                             <ViewSource url={`${docs.sourceLink}/${tag}/${docs.meta.path}/${docs.meta.file}#L${docs.meta.line}`} />
                         </div>
                         <span class="text-md dark:text-gray-300">{@html docs.construct?.description ?? ""}</span>
@@ -101,7 +101,7 @@
                                     <h1 class="text-xl font-bold uppercase">{item.name}</h1>
                                     <ul>
                                         {#each item.data as prop}
-                                            <li on:click={() => navigate(prop.name)} style="list-style-type:none;" class="cursor-pointer text-lg text-blurple-500 px-2 font-semibold border-l-2 hover:border-blurple-500">
+                                            <li on:click={() => navigate(prop.name)} style="list-style-type:none;" class="cursor-pointer text-lg text-primary hover:text-primary-focus hover:border-primary px-2 font-semibold border-l-2">
                                                 {prop.name}
                                             </li>
                                         {/each}
@@ -118,7 +118,7 @@
                                         {#each item.data as prop}
                                             <div id="scroll-prop-{prop.name}" class="py-3">
                                                 <div class="flex">
-                                                    <h1 class="text-xl font-semibold text-blurple-500 hover:text-blurple-600 cursor-pointer" on:click={() => navigate(prop.name, false)}>
+                                                    <h1 class="text-xl font-semibold text-primary hover:text-primary-focus cursor-pointer" on:click={() => navigate(prop.name, false)}>
                                                         {item.name === "Events" ? "" : "."}{prop.name}{item.name === "Methods" ? `(${prop.params?.map((m) => m.name).join(", ") || ""});` : ""}
                                                     </h1>
                                                     <ViewSource url={`${docs.sourceLink}/${tag}/${prop.meta.path}/${prop.meta.file}#L${prop.meta.line}`} />

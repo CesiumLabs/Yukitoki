@@ -2,7 +2,7 @@
     const config = window.yukitoki.config;
 </script>
 
-<footer class="bg-blurple-600 text-center py-10">
+<footer class="bg-primary text-center py-10">
     <a href="/"><h1 class="text-white text-2xl cursor-pointer font-bold">{config.FOOTER.HEADER}</h1></a>
     <p class="text-lg text-white mb-3">{config.FOOTER.DESCRIPTION}</p>
 

@@ -43,7 +43,7 @@
         background: #ffffff;
     }
     ::-webkit-scrollbar-thumb {
-        background: #304eb6;
+        @apply bg-primary-focus;
     }
 
     @layer utilities {
