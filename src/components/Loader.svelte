@@ -1,7 +1,7 @@
 <div class="bg-primary flex justify-center items-center w-full select-none py-72 space-x-3">
-    <div class="bubble bg-base-content " />
-    <div class="bubble bg-base-content " />
-    <div class="bubble bg-base-content " />
+    <div class="bubble bg-white" />
+    <div class="bubble bg-white" />
+    <div class="bubble bg-white" />
 </div>
 
 <style>

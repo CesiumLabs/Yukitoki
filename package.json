@@ -43,7 +43,6 @@
     "svelte": "^3.42.5",
     "svelte-check": "^2.2.5",
     "svelte-preprocess": "^4.9.4",
-    "svelte-switch": "0.0.4",
     "tailwindcss": "^2.2.17"
   },
   "repository": {
