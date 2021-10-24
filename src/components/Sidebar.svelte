@@ -43,7 +43,7 @@
     </button>
 </div>
 
-<div class="inline-block z-10 fixed lg:block lg:relative bg-base-100 dark:bg-gray-800 transition sidebar transform-gpu -translate-x-full lg:translate-x-0 mb-5" id="sidebar-panel">
+<div class="inline-block z-10 fixed lg:block lg:relative bg-base-100  transition sidebar transform-gpu -translate-x-full lg:translate-x-0 mb-5" id="sidebar-panel">
     <div class="sticky top-0 overflow-y-auto overflow-x-hidden w-72 md:w-80 sidebar-height">
         <div class="absolute right-0 flex items-center md:hidden">
             <button on:click={toggleSidebar} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">

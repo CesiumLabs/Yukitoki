@@ -70,7 +70,7 @@
 <Navbar />
 {#if docs}
     <Scroller />
-    <div class="text-base-content dark:text-white bg-base-100 dark:bg-gray-800 pt-3 w-full" id="relativeContainer">
+    <div class="text-base-content  bg-base-100  pt-3 w-full" id="relativeContainer">
         <Searchbar docs={docsSource.docs} />
 
         <div class="lg:flex mx-auto w-full max-w-screen-2xl">
@@ -81,10 +81,10 @@
                 {:else}
                     <div class="class-constructor-info">
                         <div class="flex">
-                            <h1 class="text-3xl dark:text-white text-base-content font-bold">{docs.construct?.name ?? docs.name}</h1>
+                            <h1 class="text-3xl  text-base-content font-bold">{docs.construct?.name ?? docs.name}</h1>
                             <ViewSource url={`${docs.sourceLink}/${tag}/${docs.meta.path}/${docs.meta.file}#L${docs.meta.line}`} />
                         </div>
-                        <span class="text-md dark:text-gray-300">{@html docs.construct?.description ?? ""}</span>
+                        <span class="text-md ">{@html docs.construct?.description ?? ""}</span>
                         <div class="construct">
                             {@html markdown(`\`\`\`js\nnew ${docs.globalName ? `${docs.globalName}.` : ""}${docs.construct?.name ?? docs.name}(${docs.construct?.params?.map((m) => m.name).join(", ") ?? ""});\n\`\`\``)}
                             {#if docs.construct?.params?.length}

@@ -11,7 +11,7 @@
 <div class="border-l-2 hover:border-primary transition overflow-y-auto">
     <table class="table-auto mx-2 my-3">
         <thead class="justify-between">
-            <tr class="dark:bg-blurple-500 bg-primary text-white">
+            <tr class="bg-primary text-white">
                 <th class="px-16 py-2">
                     <span>PARAMETER</span>
                 </th>
@@ -33,7 +33,7 @@
                 </th>
             </tr>
         </thead>
-        <tbody class="text-base-content dark:text-white dark:bg-gray-700 bg-base-200 text-center font-medium">
+        <tbody class="text-base-content   bg-base-200 text-center font-medium">
             {#each data as m}
                 <tr>
                     <td>

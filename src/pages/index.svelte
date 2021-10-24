@@ -44,7 +44,7 @@
         <span id="__copy__tooltip__">
             <Tooltip text={copyError ? "Couldn't copy" : "Copied"} display={!tooltipHidden} />
         </span>
-        <code id="install_command" class="font-semibold text-lg p-4 bg-white dark:bg-night mx-auto text-gray-900 dark:text-white hover:text-gray-800 dark:hover:text-gray-200 rounded-md"
+        <code id="install_command" class="font-semibold text-lg p-4 bg-white  mx-auto text-gray-900  hover:text-gray-800 dark:hover:text-gray-200 rounded-md"
             >{config.INSTALL_COMMAND}
             <span class="cursor-pointer" on:click={copyInstallCommand}>
                 <FontAwesomeIcon icon={faClipboardList} />
@@ -53,13 +53,13 @@
     </div>
 </div>
 
-<div class="text-base-content dark:text-gray-300 bg-base-100 mx-auto dark:bg-gray-800 py-20 grid md:grid-cols-2 grid-cols-1 gap-2 md:gap-0">
+<div class="text-base-content  bg-base-100 mx-auto  py-20 grid md:grid-cols-2 grid-cols-1 gap-2 md:gap-0">
     <div class="about py-4 px-6 md:mx-auto">
-        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-base-content">{config.DESCRIPTION.TITLE}</h1>
+        <h1 class="text-3xl font-bold opacity-90  text-base-content">{config.DESCRIPTION.TITLE}</h1>
         <p class="text-lg font-semibold">{config.DESCRIPTION.VALUE}</p>
     </div>
     <div class="why py-4 px-6 md:mx-auto">
-        <h1 class="text-3xl font-bold opacity-90 dark:text-white text-base-content">{config.DESCRIPTION_LIST.TITLE}</h1>
+        <h1 class="text-3xl font-bold opacity-90  text-base-content">{config.DESCRIPTION_LIST.TITLE}</h1>
         <ul class="text-lg font-semibold list-disc">
             {#each config.DESCRIPTION_LIST.VALUE as item}
                 <li>{item}</li>
