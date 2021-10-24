@@ -12,4 +12,4 @@ A customizable website to view docs for your projects.
 - Easy to setup
 
 # Live Preview
-**[https://yukitoki.netlify.app](https://yukitoki.netlify.app)**
+**[https://docs.snowflakedev.org](https://docs.snowflakedev.org)**
