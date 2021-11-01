@@ -9,7 +9,7 @@
 
 <Navbar />
 
-<div class="text-gray-800 dark:text-white bg-white text-center dark:bg-gray-800 py-20">
+<div class="text-gray-800  bg-white text-center  py-20">
     <div class="my-32">
         <h1
             class="text-9xl font-bold cursor-pointer select-none"
@@ -21,7 +21,7 @@
         </h1>
         <p class="font-medium text-lg" id="lostmsg">{getRandomMsg()}</p>
     </div>
-    <a class="bg-blurple-600 p-3 rounded-md hover:bg-blurple-700 text-white font-semibold" href="/">Return Home</a>
+    <a class="bg-primary p-3 rounded-md hover:bg-primary-focused text-white font-semibold" href="/">Return Home</a>
 </div>
 
 <Footer />

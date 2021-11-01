@@ -1,4 +1,5 @@
 import CONFIG from "../../config";
+
 class DocsStore {
     constructor(manager) {
         this.manager = manager;

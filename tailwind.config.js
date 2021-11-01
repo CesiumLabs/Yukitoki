@@ -1,13 +1,22 @@
 module.exports = {
+    mode: "jit",
     purge: {
         enabled: true,
         content: ["./public/index.html", "./src/**/*.svelte", "./src/app/Markdown.js"]
     },
-    darkMode: "class",
+    daisyui: {
+        styled: true,
+        base: true,
+        utils: true,
+        logs: true,
+        rtl: false,
+        themes: ["light", "dark"]
+    },
     theme: {
         extend: {
             colors: {
                 night: "#2f3136",
+                myblue: "#570df8",
                 blurple: {
                     200: "#EBEEFA",
                     300: "#C3CDEF",
@@ -24,5 +33,9 @@ module.exports = {
     variants: {
         extend: {}
     },
-    plugins: [require("@tailwindcss/forms")({ strategy: "class" }), require("@tailwindcss/typography")]
+    plugins: [
+        require("@tailwindcss/forms")({ strategy: "class" }),
+        require("@tailwindcss/typography"),
+        require("daisyui"),
+    ]
 };

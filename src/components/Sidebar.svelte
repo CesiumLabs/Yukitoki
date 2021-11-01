@@ -37,18 +37,18 @@
 <div class="absolute left-0 flex items-center md:hidden">
     <button on:click={toggleSidebar} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
         <span class="sr-only">#</span>
-        <button class="bg-blurple-600 text-2xl p-2">
+        <button class="bg-primary text-2xl p-2">
             <FontAwesomeIcon icon={faChevronCircleRight} />
         </button>
     </button>
 </div>
 
-<div class="inline-block fixed lg:block lg:relative bg-white dark:bg-gray-800 transition sidebar transform-gpu -translate-x-full lg:translate-x-0 mb-5" id="sidebar-panel">
+<div class="inline-block z-10 fixed lg:block lg:relative bg-base-100  transition sidebar transform-gpu -translate-x-full lg:translate-x-0 mb-5" id="sidebar-panel">
     <div class="sticky top-0 overflow-y-auto overflow-x-hidden w-72 md:w-80 sidebar-height">
         <div class="absolute right-0 flex items-center md:hidden">
             <button on:click={toggleSidebar} type="button" class="inline-flex items-center justify-center p-2 rounded-md text-white" aria-controls="mobile-menu" aria-expanded="false">
                 <span class="sr-only">#</span>
-                <button class="bg-blurple-600 text-2xl p-2">
+                <button class="bg-primary text-2xl p-2">
                     <FontAwesomeIcon icon={faTimesCircle} />
                 </button>
             </button>
@@ -83,7 +83,7 @@
                         <label for="files" class="font-semibold text-lg uppercase">{prop.data[item].name}</label>
                         <div id="files" class="flex flex-col">
                             {#each Object.entries(prop.data[item].files) as [filename, file]}
-                                <a class="sidebar-item-selector font-semibold" target="_self" href={$url(`/docs/${source}/${tag}/${item}/${filename}`)}>{file.name}</a>
+                                <a class="sidebar-item-selector font-semibold hover:bg-primary" target="_self" href={$url(`/docs/${source}/${tag}/${item}/${filename}`)}>{file.name}</a>
                             {/each}
                         </div>
                     {/each}
@@ -91,7 +91,7 @@
                     <label for={prop.type} class="font-semibold text-lg uppercase">{prop.type}</label>
                     <div id={prop.type} class="flex flex-col">
                         {#each Object.values(prop.data) as item}
-                            <a class="sidebar-item-selector font-semibold" target="_self" href={$url(`/docs/${source}/${tag}/${prop.type}/${item.name}`)}>{item.name}</a>
+                            <a class="sidebar-item-selector font-semibold hover:bg-primary" target="_self" href={$url(`/docs/${source}/${tag}/${prop.type}/${item.name}`)}>{item.name}</a>
                         {/each}
                     </div>
                 {/if}
@@ -120,7 +120,6 @@
     }
 
     .sidebar-item-selector:hover {
-        background-color: #7289da;
         cursor: pointer;
         color: #ffffff;
     }

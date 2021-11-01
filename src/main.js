@@ -11,18 +11,18 @@ function updateMeta() {
         writable: true,
         value: {
             toggleTheme: () => {
-                const __root__ = document.querySelector("html");
-                if (!__root__) return;
+                const root = document.querySelector("html");
+                if (!root) return;
                 const theme = window.localStorage.getItem("theme") ?? SITE_CONFIG.THEME ?? "light";
                 const newTheme = theme === "dark" ? "light" : "dark";
                 window.localStorage.setItem("theme", newTheme);
 
-                __root__.className = window.localStorage.getItem("theme");
+                root.setAttribute("data-theme", window.localStorage.getItem("theme"));
             },
             updateTheme() {
-                const __root__ = document.querySelector("html");
-                if (!__root__) return;
-                __root__.className = window.localStorage.getItem("theme") === "dark" ? "dark" : "light";
+                const root = document.querySelector("html");
+                if (!root) return;
+                root.setAttribute("data-theme", window.localStorage.getItem("theme") === "dark" ? "dark" : "light");
             },
             setTheme(theme) {
                 window.yukitoki.theme = theme;

@@ -10,10 +10,10 @@ marked.use({
         link: (href, title, text) => {
             const local = href?.startsWith(`${location.protocol}//${location.hostname}`);
             const html = renderer.link.call(renderer, href, title, text);
-            return local ? html : html.replace(/^<a /, '<a target="_blank" rel="noreferrer" class="text-blurple-500 hover:text-blurple-600"');
+            return local ? html : html.replace(/^<a /, '<a target="_blank" rel="noreferrer" class="text-primary hover:text-primary-focus"');
         },
         code: (src) => {
-            return `<pre class="my-0 break-words overflow-x-auto bg-gray-50 dark:bg-gray-900 p-5"><code class="yukitoki-code">${highlight.highlight(src, { language: "js" }).value}</code></pre>`;
+            return `<div class="mockup-code"><pre class="my-0 px-5"><code class="yukitoki-code">${highlight.highlight(src, { language: "js" }).value}</code></pre></div>`;
         },
         image: (href, title, text) => {
             const html = renderer.image.call(renderer, href, title, text);
